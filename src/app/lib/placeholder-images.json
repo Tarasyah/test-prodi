@@ -1,0 +1,17 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "campus-hero",
+      "description": "ITB Swadharma Campus Environment",
+      "imageUrl": "https://picsum.photos/seed/itbs1/1200/600",
+      "imageHint": "university campus technology"
+    },
+    {
+      "id": "student-tech",
+      "description": "Student working with technology",
+      "imageUrl": "https://picsum.photos/seed/itbs2/600/400",
+      "imageHint": "student coding"
+    }
+  ]
+}

@@ -1,30 +1,29 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 222 15% 8%;
+    --background: 222 15% 4%;
     --foreground: 210 20% 98%;
-    --card: 222 15% 10%;
+    --card: 222 15% 8%;
     --card-foreground: 210 20% 98%;
-    --popover: 222 15% 8%;
+    --popover: 222 15% 6%;
     --popover-foreground: 210 20% 98%;
     --primary: 215 100% 71%;
     --primary-foreground: 222 47% 11%;
     --secondary: 190 77% 59%;
     --secondary-foreground: 222 47% 11%;
-    --muted: 217 19% 27%;
+    --muted: 217 19% 20%;
     --muted-foreground: 215 20% 65%;
     --accent: 190 77% 59%;
     --accent-foreground: 222 47% 11%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 20% 98%;
-    --border: 217 19% 27%;
-    --input: 217 19% 27%;
+    --border: 217 19% 20%;
+    --input: 217 19% 20%;
     --ring: 215 100% 71%;
-    --radius: 0.75rem;
+    --radius: 1rem;
     --chart-1: 215 100% 71%;
     --chart-2: 190 77% 59%;
     --chart-3: 160 84% 39%;
@@ -46,11 +45,29 @@
 }
 
 .glass {
-  @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl;
+  @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-2xl;
 }
 
 .glass-interactive {
-  @apply glass hover:bg-white/10 transition-all duration-300;
+  @apply glass hover:bg-white/[0.08] transition-all duration-500;
+}
+
+/* Warna-warni Animated Background */
+.bg-mesh-animation {
+  background: radial-gradient(at 0% 0%, hsla(215, 100%, 71%, 0.15) 0, transparent 50%),
+              radial-gradient(at 50% 0%, hsla(190, 77%, 59%, 0.15) 0, transparent 50%),
+              radial-gradient(at 100% 0%, hsla(280, 65%, 60%, 0.15) 0, transparent 50%),
+              radial-gradient(at 0% 100%, hsla(160, 84%, 39%, 0.15) 0, transparent 50%),
+              radial-gradient(at 50% 100%, hsla(340, 75%, 55%, 0.15) 0, transparent 50%),
+              radial-gradient(at 100% 100%, hsla(215, 100%, 71%, 0.15) 0, transparent 50%);
+  background-size: 200% 200%;
+  animation: mesh 20s ease infinite;
+}
+
+@keyframes mesh {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
 }
 
 @media print {
@@ -60,8 +77,5 @@
   body {
     background: white !important;
     color: black !important;
-  }
-  .print-only {
-    display: block !important;
   }
 }

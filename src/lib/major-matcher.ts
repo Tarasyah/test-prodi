@@ -5,38 +5,44 @@ export interface Major {
   name: string;
   description: string;
   color: string;
+  accent: string;
 }
 
 export const MAJORS: Record<MajorId, Major> = {
   ti: {
     id: 'ti',
     name: 'Teknik Informatika',
-    description: 'Fokus pada pengembangan perangkat lunak, algoritma, dan keamanan siber.',
-    color: '#3b82f6', // Modern Blue
+    description: 'Menjadi arsitek masa depan melalui pengembangan perangkat lunak, AI, dan keamanan siber kelas dunia.',
+    color: '#3b82f6', // Bright Blue
+    accent: '#1e40af',
   },
   si: {
     id: 'si',
     name: 'Sistem Informasi',
-    description: 'Jembatan antara teknologi dan bisnis untuk mengelola data strategis.',
-    color: '#06b6d4', // Cyan
+    description: 'Mengintegrasikan teknologi informasi dengan strategi bisnis global untuk efisiensi maksimal.',
+    color: '#06b6d4', // Vibrant Cyan
+    accent: '#0891b2',
   },
   mn: {
     id: 'mn',
     name: 'Manajemen',
-    description: 'Mempelajari pengelolaan organisasi, strategi bisnis, dan kepemimpinan.',
-    color: '#8b5cf6', // Violet
+    description: 'Membentuk pemimpin masa depan dengan kemampuan manajemen strategis dan kepemimpinan visioner.',
+    color: '#8b5cf6', // Electric Purple
+    accent: '#6d28d9',
   },
   ak: {
     id: 'ak',
     name: 'Akuntansi',
-    description: 'Keahlian dalam pelaporan keuangan, audit, dan perpajakan perusahaan.',
-    color: '#f59e0b', // Amber
+    description: 'Keahlian finansial yang mendalam untuk integritas pelaporan keuangan dan audit profesional.',
+    color: '#f59e0b', // Glowing Amber
+    accent: '#d97706',
   },
   bd: {
     id: 'bd',
     name: 'Bisnis Digital',
-    description: 'Menggabungkan strategi bisnis dengan teknologi pemasaran digital modern.',
-    color: '#10b981', // Emerald
+    description: 'Menguasai ekosistem e-commerce dan strategi pemasaran digital untuk revolusi industri 4.0.',
+    color: '#10b981', // Neon Emerald
+    accent: '#059669',
   },
 };
 
@@ -52,92 +58,92 @@ export interface QuizQuestion {
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 1,
-    text: "Manakah yang lebih menarik bagimu saat menggunakan aplikasi baru?",
+    text: "Apa yang paling membuatmu tertarik saat melihat teknologi baru?",
     options: [
-      { text: "Memahami logika di balik fitur-fiturnya", weights: { ti: 5, si: 3 } },
-      { text: "Melihat bagaimana aplikasi itu membantu bisnis", weights: { mn: 4, bd: 4 } },
-      { text: "Memastikan data keuangannya aman", weights: { ak: 5 } }
+      { text: "Kode dan algoritma yang menjalankannya", weights: { ti: 5, si: 2 } },
+      { text: "Manfaat ekonominya bagi perusahaan", weights: { mn: 4, bd: 4 } },
+      { text: "Keakuratan data transaksinya", weights: { ak: 5 } }
     ]
   },
   {
     id: 2,
-    text: "Apa hobi yang paling menggambarkan dirimu?",
+    text: "Pilih aktivitas luang yang paling kamu sukai:",
     options: [
-      { text: "Memecahkan teka-teki rumit", weights: { ti: 5, ak: 2 } },
-      { text: "Merencanakan acara atau proyek", weights: { mn: 5, si: 3 } },
-      { text: "Menganalisis tren pasar atau media sosial", weights: { bd: 5, si: 2 } }
+      { text: "Mencoba software atau gadget baru", weights: { ti: 5, si: 3 } },
+      { text: "Memimpin kelompok dalam sebuah kegiatan", weights: { mn: 5, bd: 2 } },
+      { text: "Menabung dan merencanakan keuangan", weights: { ak: 5 } }
     ]
   },
   {
     id: 3,
-    text: "Jika kamu mendirikan perusahaan, peran apa yang kamu pilih?",
+    text: "Dalam tim proyek, kamu lebih suka menjadi orang yang...",
     options: [
-      { text: "Chief Technology Officer (CTO)", weights: { ti: 5, si: 3 } },
-      { text: "Chief Executive Officer (CEO)", weights: { mn: 5, bd: 3 } },
-      { text: "Chief Financial Officer (CFO)", weights: { ak: 5 } }
+      { text: "Membangun sistem atau platform", weights: { ti: 5, si: 3 } },
+      { text: "Menentukan arah dan strategi tim", weights: { mn: 5, bd: 3 } },
+      { text: "Mengelola anggaran dan detail biaya", weights: { ak: 5 } }
     ]
   },
   {
     id: 4,
-    text: "Bagaimana caramu mengambil keputusan?",
+    text: "Saat menghadapi masalah rumit, pendekatanmu adalah...",
     options: [
-      { text: "Berdasarkan data dan statistik akurat", weights: { ak: 5, si: 4 } },
-      { text: "Berdasarkan visi dan intuisi bisnis", weights: { mn: 5, bd: 4 } },
-      { text: "Berdasarkan efisiensi teknis sistem", weights: { ti: 5 } }
+      { text: "Mencari data numerik dan bukti logis", weights: { ak: 5, si: 4 } },
+      { text: "Mencari peluang inovasi baru", weights: { bd: 5, mn: 4 } },
+      { text: "Membangun solusi teknis yang efisien", weights: { ti: 5 } }
     ]
   },
   {
     id: 5,
-    text: "Apa yang membuatmu merasa puas setelah bekerja?",
+    text: "Prestasi apa yang paling membanggakan bagimu?",
     options: [
-      { text: "Berhasil memperbaiki bug atau sistem error", weights: { ti: 5 } },
-      { text: "Berhasil menyeimbangkan pembukuan keuangan", weights: { ak: 5 } },
-      { text: "Berhasil meningkatkan penjualan digital", weights: { bd: 5, mn: 3 } }
+      { text: "Menyelesaikan tantangan logika yang sulit", weights: { ti: 5 } },
+      { text: "Membantu sebuah bisnis berkembang pesat", weights: { bd: 5, mn: 4 } },
+      { text: "Menjaga keteraturan dan akurasi tinggi", weights: { ak: 5, si: 2 } }
     ]
   },
   {
     id: 6,
-    text: "Manakah tantangan yang paling ingin kamu hadapi?",
+    text: "Teknologi masa depan mana yang paling menantang?",
     options: [
-      { text: "Membangun kecerdasan buatan (AI)", weights: { ti: 5, si: 2 } },
-      { text: "Mengelola tim besar untuk satu tujuan", weights: { mn: 5, si: 3 } },
-      { text: "Menemukan pola dalam laporan keuangan", weights: { ak: 5 } }
+      { text: "Kecerdasan Buatan dan Robotika", weights: { ti: 5 } },
+      { text: "Manajemen Global dan Startup", weights: { mn: 5, bd: 3 } },
+      { text: "Audit Digital dan Blockchain", weights: { ak: 5, si: 3 } }
     ]
   },
   {
     id: 7,
-    text: "Bagaimana pendapatmu tentang 'Data'?",
+    text: "Apa pandanganmu tentang data di era sekarang?",
     options: [
-      { text: "Data adalah infrastruktur yang harus dibangun", weights: { ti: 5 } },
-      { text: "Data adalah informasi strategis untuk manajemen", weights: { si: 5, mn: 3 } },
-      { text: "Data adalah bukti transaksi yang valid", weights: { ak: 5 } }
+      { text: "Bahan baku untuk membangun AI", weights: { ti: 5 } },
+      { text: "Aset berharga untuk strategi perusahaan", weights: { si: 5, mn: 4 } },
+      { text: "Bukti finansial yang harus dipertanggungjawabkan", weights: { ak: 5 } }
     ]
   },
   {
     id: 8,
-    text: "Pilihlah salah satu kata kunci yang paling mewakilimu:",
+    text: "Manakah nilai yang paling kamu junjung tinggi?",
     options: [
-      { text: "Inovasi", weights: { bd: 5, ti: 3 } },
-      { text: "Integritas", weights: { ak: 5, mn: 2 } },
-      { text: "Integrasi", weights: { si: 5, ti: 2 } }
+      { text: "Kecepatan dan Inovasi", weights: { bd: 5, ti: 3 } },
+      { text: "Kejujuran dan Akurasi", weights: { ak: 5, mn: 2 } },
+      { text: "Efisiensi dan Konektivitas", weights: { si: 5, ti: 2 } }
     ]
   },
   {
     id: 9,
-    text: "Apa yang kamu lakukan saat melihat proses yang lambat?",
+    text: "Jika melihat toko online yang sukses, apa yang kamu analisis?",
     options: [
-      { text: "Mencari cara otomatisasi lewat kode", weights: { ti: 5 } },
-      { text: "Menata ulang alur kerja tim", weights: { mn: 5, si: 4 } },
-      { text: "Mengevaluasi pengeluaran biayanya", weights: { ak: 5 } }
+      { text: "Keamanan payment gateway-nya", weights: { ti: 5, ak: 2 } },
+      { text: "User experience dan platform-nya", weights: { si: 5, bd: 3 } },
+      { text: "Strategi branding dan marketingnya", weights: { bd: 5, mn: 3 } }
     ]
   },
   {
     id: 10,
-    text: "Di mana kamu melihat dirimu 5 tahun ke depan?",
+    text: "Cita-citamu di masa depan adalah...",
     options: [
-      { text: "Menjadi Lead Developer di Tech Giant", weights: { ti: 5 } },
-      { text: "Memiliki Startup Digital yang sukses", weights: { bd: 5, mn: 3 } },
-      { text: "Menjadi Akuntan Publik atau Konsultan Pajak", weights: { ak: 5 } }
+      { text: "Insinyur Software atau Data Scientist", weights: { ti: 5 } },
+      { text: "CEO atau Digital Entrepreneur", weights: { bd: 5, mn: 5 } },
+      { text: "Auditor atau Manajer Keuangan", weights: { ak: 5 } }
     ]
   }
 ];
@@ -159,6 +165,7 @@ export const calculateResults = (answers: number[]) => {
     name: MAJORS[id as MajorId].name,
     percentage: totalScore > 0 ? Math.round((score / totalScore) * 100) : 0,
     color: MAJORS[id as MajorId].color,
+    accent: MAJORS[id as MajorId].accent,
     description: MAJORS[id as MajorId].description
   })).sort((a, b) => b.percentage - a.percentage);
 

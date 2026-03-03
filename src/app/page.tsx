@@ -9,7 +9,7 @@ import { calculateResults } from '@/lib/major-matcher';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { GraduationCap, ArrowRight, Zap, Globe, Shield } from 'lucide-react';
+import { GraduationCap, ArrowRight, Zap, Globe, Shield, Sparkles } from 'lucide-react';
 
 type AppState = 'intro' | 'quiz' | 'loading' | 'results';
 
@@ -29,10 +29,10 @@ export default function Home() {
     const calculated = calculateResults(answers);
     setResults(calculated);
     
-    // Simulate complex analysis
+    // Simulate deep analysis
     setTimeout(() => {
       setAppState('results');
-    }, 5000);
+    }, 4500);
   };
 
   const handleRetake = () => {
@@ -42,50 +42,54 @@ export default function Home() {
 
   return (
     <main className="min-h-screen relative overflow-hidden bg-background">
-      {/* Dynamic Background elements */}
-      <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-secondary/10 blur-[120px] rounded-full pointer-events-none" />
+      {/* Mesh Background for Intro */}
+      <div className={`absolute inset-0 z-0 transition-opacity duration-1000 ${appState === 'intro' ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-primary/20 blur-[140px] rounded-full animate-pulse" />
+        <div className="absolute bottom-[-10%] left-[-20%] w-[50%] h-[50%] bg-secondary/10 blur-[120px] rounded-full" />
+      </div>
 
       <AnimatePresence mode="wait">
         {appState === 'intro' && (
           <motion.div
             key="intro"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="relative z-10 flex flex-col items-center justify-center min-h-screen p-6 max-w-4xl mx-auto text-center space-y-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="relative z-10 flex flex-col items-center justify-center min-h-screen p-6 max-w-5xl mx-auto text-center space-y-12"
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="p-3 px-6 rounded-full glass border-primary/30 text-primary font-bold text-sm tracking-widest uppercase flex items-center gap-2"
+              className="p-3 px-6 rounded-full glass border-primary/30 text-primary font-bold text-xs tracking-[0.3em] uppercase flex items-center gap-3"
             >
-              <Zap className="w-4 h-4" />
-              ITB Swadharma Tech-Powered Matcher
+              <Sparkles className="w-4 h-4" />
+              ITB Swadharma AI Major Engine
             </motion.div>
 
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-7xl font-headline font-bold leading-[1.1] tracking-tight text-white">
-                Temukan Masa Depanmu di <span className="text-primary">ITB Swadharma</span>
+              <h1 className="text-6xl md:text-8xl font-headline font-bold leading-none tracking-tighter text-white">
+                Rancang Masa <span className="text-primary italic">Depanmu.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Gunakan algoritma cerdas kami untuk menemukan program studi yang paling cocok dengan minat dan kepribadianmu.
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-medium">
+                Temukan program studi yang paling sinkron dengan potensi unik dan ambisimu melalui analisis psikometrik berbasis AI.
               </p>
             </div>
 
             <motion.div 
-              initial={{ y: 20, opacity: 0 }}
+              initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="glass p-8 rounded-3xl w-full max-w-md space-y-6"
+              className="glass p-10 rounded-[2.5rem] w-full max-w-md space-y-8 relative overflow-hidden group"
             >
-              <div className="space-y-2 text-left">
-                <Label htmlFor="name" className="text-white/60 ml-1">Nama Lengkap</Label>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary" />
+              
+              <div className="space-y-3 text-left">
+                <Label htmlFor="name" className="text-white/40 text-xs font-bold uppercase tracking-widest ml-1">Nama Lengkap Kamu</Label>
                 <Input
                   id="name"
-                  placeholder="Masukkan namamu..."
-                  className="h-12 bg-white/5 border-white/10 text-lg focus:border-primary/50 transition-all rounded-xl"
+                  placeholder="Ketik namamu di sini..."
+                  className="h-14 bg-white/[0.03] border-white/10 text-xl focus:border-primary/50 transition-all rounded-2xl px-6"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && startQuiz()}
@@ -94,25 +98,25 @@ export default function Home() {
               <Button 
                 onClick={startQuiz}
                 disabled={!userName.trim()}
-                className="w-full h-12 text-lg font-bold bg-primary text-background hover:bg-primary/90 transition-all rounded-xl"
+                className="w-full h-14 text-xl font-bold bg-primary text-background hover:bg-white hover:scale-[1.02] transition-all rounded-2xl shadow-2xl shadow-primary/20"
               >
                 Mulai Analisis
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-2 w-6 h-6" />
               </Button>
             </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-white/5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-16 border-t border-white/5 w-full">
               {[
-                { icon: <GraduationCap />, text: "Kurikulum Modern" },
-                { icon: <Zap />, text: "Berbasis Industri" },
+                { icon: <GraduationCap />, text: "Modern Curriculum" },
+                { icon: <Zap />, text: "Industry Ready" },
                 { icon: <Globe />, text: "Global Network" },
-                { icon: <Shield />, text: "Terakreditasi" }
+                { icon: <Shield />, text: "Accredited" }
               ].map((item, i) => (
-                <div key={i} className="flex flex-col items-center gap-2 text-muted-foreground">
-                  <div className="p-2 rounded-lg bg-white/5 text-primary">
+                <div key={i} className="flex flex-col items-center gap-3 text-muted-foreground/60 hover:text-white transition-colors">
+                  <div className="p-3 rounded-2xl bg-white/5 text-primary">
                     {item.icon}
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-wider">{item.text}</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em]">{item.text}</span>
                 </div>
               ))}
             </div>
@@ -122,8 +126,8 @@ export default function Home() {
         {appState === 'quiz' && (
           <motion.div 
             key="quiz" 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 1.05 }} 
+            animate={{ opacity: 1, scale: 1 }}
             className="relative z-10"
           >
             <QuizFlow onComplete={onQuizComplete} />
@@ -146,12 +150,10 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Footer Branding */}
-      {appState !== 'loading' && (
-        <footer className="relative z-10 py-12 text-center text-muted-foreground/40 text-sm no-print">
-          <p>© 2026 Institut Teknologi dan Bisnis Swadharma. All Rights Reserved.</p>
-        </footer>
-      )}
+      {/* Persistent Footer Branding */}
+      <footer className="relative z-10 py-12 text-center text-muted-foreground/30 text-[10px] font-bold tracking-[0.4em] uppercase no-print">
+        <p>© 2026 Institut Teknologi dan Bisnis Swadharma. Powered by Next-AI Engine.</p>
+      </footer>
     </main>
   );
 }

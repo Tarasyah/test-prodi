@@ -6,7 +6,7 @@ import { MajorId } from '@/lib/major-matcher';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { Download, GraduationCap, ArrowRight, Printer, RefreshCcw, Sparkles, ShieldCheck, Globe, Zap, Heart, Star } from 'lucide-react';
+import { Download, GraduationCap, ArrowRight, Printer, RefreshCcw, Sparkles, ShieldCheck, Globe, Zap, Heart, Star, LayoutGrid } from 'lucide-react';
 import html2canvas from 'html2canvas';
 
 interface ResultItem {
@@ -37,7 +37,7 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
     try {
       const canvas = await html2canvas(captureEl, {
         backgroundColor: '#020617',
-        scale: 3, // High resolution for social media
+        scale: 3,
         useCORS: true,
         logging: false,
       });
@@ -52,179 +52,185 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
   };
 
   const floatingElements = [
-    { icon: <Zap className="w-8 h-8" />, x: "10%", y: "20%", delay: 0 },
-    { icon: <Star className="w-6 h-6" />, x: "85%", y: "15%", delay: 1 },
-    { icon: <Heart className="w-5 h-5" />, x: "75%", y: "80%", delay: 2 },
-    { icon: <Sparkles className="w-7 h-7" />, x: "15%", y: "75%", delay: 0.5 },
+    { icon: <Zap className="w-12 h-12" />, x: "8%", y: "15%", delay: 0 },
+    { icon: <Star className="w-8 h-8" />, x: "88%", y: "12%", delay: 1.5 },
+    { icon: <Heart className="w-6 h-6" />, x: "82%", y: "85%", delay: 3 },
+    { icon: <Sparkles className="w-10 h-10" />, x: "12%", y: "78%", delay: 0.8 },
+    { icon: <LayoutGrid className="w-8 h-8" />, x: "45%", y: "5%", delay: 2.2 },
+    { icon: <Globe className="w-7 h-7" />, x: "92%", y: "45%", delay: 1.2 },
   ];
 
   return (
-    <div className="relative min-h-screen bg-mesh-vibrant overflow-hidden">
+    <div className="relative min-h-screen bg-mesh-vibrant overflow-hidden transition-colors duration-1000">
       {/* Floating Decorative Elements */}
       {floatingElements.map((el, i) => (
         <motion.div
           key={i}
           initial={{ opacity: 0 }}
           animate={{ 
-            opacity: [0.2, 0.5, 0.2],
-            y: [0, -20, 0],
-            rotate: [0, 10, -10, 0]
+            opacity: [0.1, 0.4, 0.1],
+            y: [0, -40, 0],
+            x: [0, 15, -15, 0],
+            rotate: [0, 20, -20, 0]
           }}
           transition={{ 
-            duration: 5 + i, 
+            duration: 8 + i, 
             repeat: Infinity, 
             delay: el.delay,
             ease: "easeInOut" 
           }}
-          className="absolute z-0 text-primary/20 pointer-events-none"
+          className="absolute z-0 text-primary/30 pointer-events-none"
           style={{ left: el.x, top: el.y }}
         >
           {el.icon}
         </motion.div>
       ))}
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 py-16 space-y-16">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20 space-y-20">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center space-y-6"
+          transition={{ duration: 1 }}
+          className="text-center space-y-8"
         >
           <motion.div 
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="inline-flex items-center gap-3 px-6 py-2 rounded-full glass border-primary/30 text-primary text-sm font-black uppercase tracking-[0.3em] mb-4"
+            animate={{ scale: [1, 1.1, 1], rotate: [0, 2, -2, 0] }}
+            transition={{ duration: 5, repeat: Infinity }}
+            className="inline-flex items-center gap-3 px-8 py-3 rounded-full animate-border-rainbow text-primary text-sm font-black uppercase tracking-[0.4em] mb-4"
           >
-            <Sparkles className="w-4 h-4 animate-pulse" />
-            Analysis Engine Complete
+            <Sparkles className="w-5 h-5 animate-pulse" />
+            AI Analytical Insight Ready
           </motion.div>
-          <h1 className="text-6xl md:text-8xl font-headline font-bold tracking-tighter leading-none">
+          <h1 className="text-7xl md:text-9xl font-headline font-bold tracking-tighter leading-none text-white">
             Hi {userName}, <br />
-            Masa <span className="text-primary italic">Depanmu</span> Adalah:
+            Takdir <span className="text-primary italic">Kariermu</span> Adalah:
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
-            Algoritma AI kami telah memetakan jalur karirmu. Potensi terkuatmu bersinar di bidang <span className="text-white font-black underline decoration-primary decoration-4 underline-offset-8">{topMajor.name}</span>.
+          <p className="text-2xl text-muted-foreground max-w-3xl mx-auto font-medium leading-relaxed">
+            Analisis neural kami mendeteksi resonansi kognitif tertinggimu di bidang <span className="text-white font-black underline decoration-primary decoration-8 underline-offset-12">{topMajor.name}</span>.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           {/* Main Hero Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-8 h-full"
           >
-            <div className="relative overflow-hidden rounded-[3rem] p-12 glass h-full border-white/10 flex flex-col group">
+            <div className="relative overflow-hidden rounded-[4rem] p-16 animate-border-rainbow h-full flex flex-col group shadow-primary/20 shadow-2xl">
               {/* Dynamic Glow Background */}
               <div 
-                className="absolute -top-40 -right-40 w-[600px] h-[600px] blur-[160px] rounded-full opacity-40 transition-all duration-1000 group-hover:scale-125"
+                className="absolute -top-60 -right-60 w-[800px] h-[800px] blur-[200px] rounded-full opacity-40 transition-all duration-1000 group-hover:scale-125"
                 style={{ backgroundColor: topMajor.color }}
               />
               
-              <div className="relative z-10 flex-1 space-y-10">
+              <div className="relative z-10 flex-1 space-y-12">
                 <div className="flex justify-between items-start">
-                  <div className="space-y-2">
-                    <p className="text-xs font-black tracking-[0.4em] text-primary uppercase">Main Future Path</p>
-                    <h2 className="text-6xl md:text-7xl font-headline font-bold text-white tracking-tighter">{topMajor.name}</h2>
+                  <div className="space-y-3">
+                    <p className="text-sm font-black tracking-[0.5em] text-primary uppercase">Elite Future Path</p>
+                    <h2 className="text-7xl md:text-8xl font-headline font-bold text-white tracking-tighter">{topMajor.name}</h2>
                   </div>
                   <motion.div 
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="w-24 h-24 rounded-3xl flex items-center justify-center shadow-2xl relative"
+                    animate={{ rotate: 360, scale: [1, 1.1, 1] }}
+                    transition={{ 
+                      rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+                      scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                    }}
+                    className="w-32 h-32 rounded-[2.5rem] flex items-center justify-center shadow-2xl relative"
                     style={{ backgroundColor: topMajor.color }}
                   >
-                    <GraduationCap className="w-12 h-12 text-background z-10" />
-                    <div className="absolute inset-0 rounded-3xl bg-white/20 blur-xl animate-pulse" />
+                    <GraduationCap className="w-16 h-16 text-background z-10" />
+                    <div className="absolute inset-0 rounded-[2.5rem] bg-white/30 blur-2xl animate-pulse" />
                   </motion.div>
                 </div>
 
-                <div className="flex items-center gap-8">
-                  <div className="flex items-baseline gap-2">
+                <div className="flex items-center gap-12">
+                  <div className="flex items-baseline gap-3">
                     <motion.span 
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={{ opacity: 0, x: -30 }}
                       animate={{ opacity: 1, x: 0 }}
-                      className="text-9xl font-headline font-bold text-primary"
+                      className="text-[10rem] font-headline font-bold text-primary leading-none"
                     >
                       {topMajor.percentage}
                     </motion.span>
-                    <span className="text-4xl font-bold text-primary/40">%</span>
+                    <span className="text-5xl font-bold text-primary/40">%</span>
                   </div>
-                  <div className="h-24 w-px bg-white/10" />
-                  <div className="space-y-1">
-                    <p className="text-sm text-white/60 font-black uppercase tracking-[0.2em]">Match Score</p>
-                    <p className="text-lg text-muted-foreground font-medium leading-tight">
-                      Kecocokan Profil <br />Psikometrik Digital
+                  <div className="h-32 w-px bg-white/10" />
+                  <div className="space-y-2">
+                    <p className="text-base text-white/60 font-black uppercase tracking-[0.3em]">Precision Match</p>
+                    <p className="text-2xl text-muted-foreground font-medium leading-tight">
+                      Sinkronisasi Profil <br />Era Industri 5.0
                     </p>
                   </div>
                 </div>
 
                 <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="p-8 rounded-[2rem] bg-white/[0.04] border border-white/10 relative overflow-hidden"
+                  transition={{ delay: 0.6 }}
+                  className="p-10 rounded-[3rem] bg-white/[0.04] border border-white/10 relative overflow-hidden backdrop-blur-md"
                 >
-                  <p className="text-2xl text-white/90 leading-relaxed italic font-medium relative z-10">
+                  <p className="text-3xl text-white/90 leading-relaxed italic font-medium relative z-10">
                     "{topMajor.description}"
                   </p>
-                  <div className="absolute top-4 left-4 text-primary/10 font-serif text-8xl leading-none">"</div>
+                  <div className="absolute top-6 left-6 text-primary/15 font-serif text-[12rem] leading-none pointer-events-none">"</div>
                 </motion.div>
 
-                <div className="pt-6 flex flex-wrap gap-6 no-print">
+                <div className="pt-10 flex flex-wrap gap-8 no-print">
                   <Button 
                     size="lg" 
-                    className="h-16 bg-primary text-background font-black text-xl hover:scale-105 transition-all px-12 rounded-2xl shadow-2xl shadow-primary/30"
+                    className="h-20 bg-primary text-background font-black text-2xl hover:scale-105 transition-all px-16 rounded-[2rem] shadow-2xl shadow-primary/40 group/btn"
                     asChild
                   >
                     <a href="https://pmb.swadharma.ac.id" target="_blank" rel="noopener noreferrer">
                       DAFTAR SEKARANG
-                      <ArrowRight className="ml-3 w-7 h-7" />
+                      <ArrowRight className="ml-4 w-8 h-8 group-hover/btn:translate-x-2 transition-transform" />
                     </a>
                   </Button>
-                  <div className="flex gap-4">
+                  <div className="flex gap-5">
                     <Button 
                       size="icon" 
                       variant="outline" 
-                      className="w-16 h-16 rounded-2xl border-white/10 bg-white/5 hover:bg-white/15 hover:border-white/30"
+                      className="w-20 h-20 rounded-[1.8rem] border-white/10 bg-white/5 hover:bg-white/15 hover:border-primary/50 transition-all hover:scale-110"
                       onClick={handleDownload}
-                      title="Unduh Hasil 4:5"
+                      title="Unduh Hasil High-Res 4:5"
                     >
-                      <Download className="w-7 h-7" />
+                      <Download className="w-8 h-8" />
                     </Button>
                     <Button 
                       size="icon" 
                       variant="outline" 
-                      className="w-16 h-16 rounded-2xl border-white/10 bg-white/5 hover:bg-white/15"
+                      className="w-20 h-20 rounded-[1.8rem] border-white/10 bg-white/5 hover:bg-white/15 hover:scale-110 transition-all"
                       onClick={() => window.print()}
-                      title="Cetak Laporan"
+                      title="Cetak Laporan PDF"
                     >
-                      <Printer className="w-7 h-7" />
+                      <Printer className="w-8 h-8" />
                     </Button>
                     <Button 
                       size="icon" 
                       variant="secondary" 
-                      className="w-16 h-16 rounded-2xl bg-white/5 hover:bg-red-500/20 hover:text-red-400 transition-colors"
+                      className="w-20 h-20 rounded-[1.8rem] bg-white/5 hover:bg-destructive/20 hover:text-destructive transition-all hover:scale-110"
                       onClick={onRetake}
                       title="Tes Ulang"
                     >
-                      <RefreshCcw className="w-7 h-7" />
+                      <RefreshCcw className="w-8 h-8" />
                     </Button>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-16 pt-10 border-t border-white/5 flex justify-between items-end text-white/30">
-                <div className="flex items-center gap-5">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center font-black text-primary text-2xl border border-primary/20">S</div>
+              <div className="mt-20 pt-12 border-t border-white/5 flex justify-between items-end text-white/30">
+                <div className="flex items-center gap-6">
+                  <div className="w-16 h-16 rounded-[1.5rem] bg-primary/10 flex items-center justify-center font-black text-primary text-3xl border border-primary/20">S</div>
                   <div>
-                    <p className="text-[10px] font-black tracking-[0.3em] uppercase mb-1">Official Results From</p>
-                    <p className="text-xl font-headline font-bold text-white/80 tracking-wide">ITB SWADHARMA</p>
+                    <p className="text-xs font-black tracking-[0.4em] uppercase mb-1">Official Results Authorized By</p>
+                    <p className="text-2xl font-headline font-bold text-white/80 tracking-wide">ITB SWADHARMA</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-[10px] font-black tracking-[0.3em] uppercase mb-1">Analysis ID</p>
-                  <p className="text-xl font-headline font-bold text-white/80 tracking-wide">SWD-2026-{Math.random().toString(36).substring(7).toUpperCase()}</p>
+                  <p className="text-xs font-black tracking-[0.4em] uppercase mb-1">Blockchain ID</p>
+                  <p className="text-2xl font-headline font-bold text-white/80 tracking-wide">SWD-26-{Math.random().toString(36).substring(5).toUpperCase()}</p>
                 </div>
               </div>
             </div>
@@ -232,31 +238,31 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
 
           {/* Stats & Alternates */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="lg:col-span-4 flex flex-col gap-8"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="lg:col-span-4 flex flex-col gap-10"
           >
-            <Card className="glass border-white/10 overflow-hidden flex-1 rounded-[3rem] p-4">
-              <CardContent className="p-8 flex flex-col h-full space-y-8">
+            <Card className="animate-border-rainbow overflow-hidden flex-1 rounded-[4rem] p-6 shadow-2xl">
+              <CardContent className="p-10 flex flex-col h-full space-y-12">
                 <div className="flex justify-between items-center">
-                  <h3 className="text-2xl font-headline font-bold">Data Analysis</h3>
-                  <Zap className="w-6 h-6 text-primary animate-pulse" />
+                  <h3 className="text-3xl font-headline font-bold">Market Analysis</h3>
+                  <Zap className="w-8 h-8 text-primary animate-pulse" />
                 </div>
                 
-                <div className="flex-1 min-h-[350px]">
+                <div className="flex-1 min-h-[400px]">
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={results} layout="vertical" margin={{ left: -10, right: 40 }}>
+                    <BarChart data={results} layout="vertical" margin={{ left: -15, right: 50 }}>
                       <XAxis type="number" hide />
                       <YAxis 
                         dataKey="name" 
                         type="category" 
-                        width={130}
+                        width={150}
                         axisLine={false}
                         tickLine={false}
-                        tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 13, fontWeight: 700 }}
+                        tick={{ fill: 'rgba(255,255,255,0.8)', fontSize: 15, fontWeight: 800 }}
                       />
-                      <Bar dataKey="percentage" radius={[0, 12, 12, 0]} barSize={32}>
+                      <Bar dataKey="percentage" radius={[0, 16, 16, 0]} barSize={40}>
                         {results.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
@@ -265,10 +271,10 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
                   </ResponsiveContainer>
                 </div>
 
-                <div className="p-6 rounded-[2rem] bg-primary/10 border border-primary/20 flex gap-5 items-center">
-                  <Globe className="w-10 h-10 text-primary shrink-0" />
-                  <p className="text-sm text-primary-foreground font-bold leading-relaxed">
-                    Kurikulum 2026 kami memastikan kamu siap bersaing di level internasional.
+                <div className="p-8 rounded-[2.5rem] bg-primary/15 border border-primary/30 flex gap-6 items-center">
+                  <Globe className="w-12 h-12 text-primary shrink-0 animate-spin-slow" />
+                  <p className="text-base text-white font-bold leading-relaxed">
+                    Global Hybrid Curriculum 2026 siap mengantarkanmu ke panggung dunia.
                   </p>
                 </div>
               </CardContent>
@@ -276,124 +282,127 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
           </motion.div>
         </div>
 
-        {/* Career Alternatives */}
+        {/* Secondary Paths */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="space-y-10"
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="space-y-12"
         >
-          <div className="flex items-center gap-8">
-            <div className="h-px flex-1 bg-white/10" />
-            <h3 className="text-xs font-black tracking-[0.5em] uppercase text-primary">Secondary Career Paths</h3>
-            <div className="h-px flex-1 bg-white/10" />
+          <div className="flex items-center gap-10">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <h3 className="text-sm font-black tracking-[0.8em] uppercase text-primary">Potential Pivot Paths</h3>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {results.slice(1, 5).map((major, i) => (
               <motion.div 
                 key={major.id} 
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="glass p-8 rounded-[2.5rem] border-white/5 hover:border-white/20 transition-all group cursor-default relative overflow-hidden"
+                whileHover={{ y: -15, scale: 1.05 }}
+                className="glass p-10 rounded-[3rem] border-white/5 hover:animate-border-rainbow transition-all group cursor-default relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 blur-3xl opacity-10 group-hover:opacity-30 transition-opacity" style={{ backgroundColor: major.color }} />
-                <div className="flex justify-between items-center mb-6">
-                  <span className="text-xs font-black px-3 py-1 rounded-full bg-white/5 border border-white/10" style={{ color: major.color }}>{major.percentage}% Match</span>
+                <div className="absolute -top-10 -right-10 w-32 h-32 blur-3xl opacity-20 group-hover:opacity-50 transition-opacity" style={{ backgroundColor: major.color }} />
+                <div className="flex justify-between items-center mb-8">
+                  <span className="text-sm font-black px-4 py-1.5 rounded-full bg-white/5 border border-white/10" style={{ color: major.color }}>{major.percentage}%</span>
                 </div>
-                <h4 className="font-headline font-bold text-xl text-white group-hover:text-primary transition-colors">{major.name}</h4>
+                <h4 className="font-headline font-bold text-2xl text-white group-hover:text-primary transition-colors">{major.name}</h4>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        <div className="flex justify-center pt-12 no-print">
+        <div className="flex justify-center pt-16 no-print">
           <Button 
             variant="ghost" 
             size="lg"
-            className="text-white/40 hover:text-white hover:bg-white/5 rounded-2xl h-14 px-8" 
+            className="text-white/40 hover:text-white hover:bg-white/5 rounded-2xl h-16 px-10 transition-all hover:scale-105" 
             onClick={onRetake}
           >
-            <RefreshCcw className="w-5 h-5 mr-3" />
-            Ulangi Analisis dari Awal
+            <RefreshCcw className="w-6 h-6 mr-4" />
+            RESET ANALYTICS ENGINE
           </Button>
         </div>
       </div>
 
-      {/* PREMIUM 4:5 Template for Download - 1080x1350 */}
+      {/* ULTRA PREMIUM 4:5 Template for Download - 1080x1350 */}
       <div 
         ref={shareCardRef}
         style={{ 
           display: 'none', 
           width: '1080px', 
           height: '1350px',
-          padding: '120px',
+          padding: '100px',
           flexDirection: 'column',
           background: '#020617',
           color: 'white',
           position: 'fixed',
           left: '-5000px',
-          fontFamily: 'Space Grotesk, sans-serif'
+          fontFamily: 'Space Grotesk, sans-serif',
+          overflow: 'hidden'
         }}
       >
         {/* Layered Background Design */}
-        <div style={{ position: 'absolute', top: '-20%', right: '-20%', width: '800px', height: '800px', background: topMajor.color, borderRadius: '50%', filter: 'blur(200px)', opacity: 0.3 }} />
-        <div style={{ position: 'absolute', bottom: '-10%', left: '-10%', width: '600px', height: '600px', background: '#3b82f6', borderRadius: '50%', filter: 'blur(180px)', opacity: 0.15 }} />
+        <div style={{ position: 'absolute', top: '-15%', right: '-15%', width: '1000px', height: '1000px', background: topMajor.color, borderRadius: '50%', filter: 'blur(250px)', opacity: 0.35 }} />
+        <div style={{ position: 'absolute', bottom: '-10%', left: '-10%', width: '800px', height: '800px', background: '#3b82f6', borderRadius: '50%', filter: 'blur(200px)', opacity: 0.2 }} />
         
         {/* Tech Grid Pattern */}
-        <div style={{ position: 'absolute', inset: 0, opacity: 0.05, backgroundImage: 'radial-gradient(circle, white 2px, transparent 2px)', backgroundSize: '60px 60px' }} />
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.05, border: '60px solid white' }} />
 
-        <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 10 }}>
           {/* Brand Header */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-              <div style={{ width: '100px', height: '100px', background: topMajor.color, borderRadius: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '48px', fontWeight: '900', color: '#020617', boxShadow: `0 30px 60px ${topMajor.color}44` }}>S</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
+              <div style={{ width: '120px', height: '120px', background: topMajor.color, borderRadius: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '60px', fontWeight: '900', color: '#020617', boxShadow: `0 40px 80px ${topMajor.color}55` }}>S</div>
               <div>
-                <div style={{ fontSize: '38px', fontWeight: '800', letterSpacing: '6px' }}>ITB SWADHARMA</div>
-                <div style={{ fontSize: '18px', opacity: 0.6, letterSpacing: '10px' }}>FUTURE ENGINE v2.0</div>
+                <div style={{ fontSize: '48px', fontWeight: '900', letterSpacing: '8px' }}>ITB SWADHARMA</div>
+                <div style={{ fontSize: '22px', opacity: 0.6, letterSpacing: '14px', marginTop: '8px' }}>NEURAL ENGINE v26.0</div>
               </div>
             </div>
-            <div style={{ padding: '20px 40px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.2)', background: 'rgba(255,255,255,0.05)', fontSize: '24px', fontWeight: '900', color: topMajor.color }}>2026 CERTIFIED</div>
+            <div style={{ padding: '24px 50px', borderRadius: '30px', border: `3px solid ${topMajor.color}`, background: 'rgba(255,255,255,0.05)', fontSize: '28px', fontWeight: '900', color: topMajor.color }}>CERTIFIED ANALYTICS</div>
           </div>
 
           {/* Main Hero Content */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
             <div>
-              <div style={{ fontSize: '42px', opacity: 0.7, marginBottom: '24px', fontWeight: '500', letterSpacing: '2px' }}>Personal Analysis for <span style={{ color: 'white', fontWeight: '900' }}>{userName}</span></div>
-              <div style={{ fontSize: '120px', fontWeight: '900', lineHeight: 0.9, letterSpacing: '-4px' }}>
+              <div style={{ fontSize: '40px', opacity: 0.6, marginBottom: '24px', fontWeight: '500', letterSpacing: '4px' }}>INDIVIDUAL PATHWAY FOR:</div>
+              <div style={{ fontSize: '70px', fontWeight: '900', color: 'white', textTransform: 'uppercase', marginBottom: '40px' }}>{userName}</div>
+              <div style={{ fontSize: '140px', fontWeight: '900', lineHeight: 0.85, letterSpacing: '-6px' }}>
                 {topMajor.name.split(' ').map((word, i) => (
-                  <span key={i} style={{ display: 'block', color: i === 1 ? topMajor.color : 'white' }}>{word}</span>
+                  <div key={i} style={{ color: i === 1 ? topMajor.color : 'white' }}>{word}</div>
                 ))}
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '60px', alignItems: 'center' }}>
-              <div style={{ fontSize: '240px', fontWeight: '900', color: topMajor.color, lineHeight: 0.8 }}>{topMajor.percentage}%</div>
-              <div style={{ height: '200px', width: '6px', background: 'rgba(255,255,255,0.15)', borderRadius: '10px' }} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <div style={{ fontSize: '32px', fontWeight: '900', color: 'white' }}>PSYCHOMETRIC MATCH</div>
-                <div style={{ fontSize: '28px', maxWidth: '380px', opacity: 0.7, lineHeight: 1.4, fontWeight: '500' }}>
-                  Sangat cocok dengan aspirasi dan profil kognitif digital kamu.
+            <div style={{ display: 'flex', gap: '80px', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '60px', borderRadius: '60px', border: '1px solid rgba(255,255,255,0.1)' }}>
+              <div style={{ fontSize: '240px', fontWeight: '900', color: topMajor.color, lineHeight: 0.7 }}>{topMajor.percentage}%</div>
+              <div style={{ height: '180px', width: '8px', background: topMajor.color, borderRadius: '10px', opacity: 0.3 }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div style={{ fontSize: '38px', fontWeight: '900', color: 'white', letterSpacing: '2px' }}>NEURAL MATCH SCORE</div>
+                <div style={{ fontSize: '30px', maxWidth: '450px', opacity: 0.7, lineHeight: 1.4, fontWeight: '500' }}>
+                  Sangat selaras dengan aspirasi digital dan profil kognitif masa depan kamu.
                 </div>
               </div>
             </div>
 
-            <div style={{ padding: '80px', background: 'rgba(255,255,255,0.04)', borderRadius: '64px', border: `2px solid rgba(255,255,255,0.1)`, position: 'relative' }}>
-              <div style={{ position: 'absolute', top: '40px', left: '40px', opacity: 0.3, color: topMajor.color }}><Sparkles size={60} /></div>
-              <div style={{ fontSize: '36px', lineHeight: 1.6, textAlign: 'center', fontStyle: 'italic', color: 'rgba(255,255,255,0.95)', fontWeight: '500' }}>
+            <div style={{ padding: '70px', background: `${topMajor.color}11`, borderRadius: '60px', border: `2px solid ${topMajor.color}33`, position: 'relative' }}>
+              <div style={{ position: 'absolute', top: '30px', left: '30px', opacity: 0.2, color: topMajor.color }}><Sparkles size={80} /></div>
+              <div style={{ fontSize: '40px', lineHeight: 1.5, textAlign: 'center', fontStyle: 'italic', color: 'rgba(255,255,255,0.95)', fontWeight: '600' }}>
                 "{topMajor.description}"
               </div>
             </div>
           </div>
 
           {/* Social Proof Footer */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', paddingTop: '60px', borderTop: '2px solid rgba(255,255,255,0.1)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', paddingTop: '60px', borderTop: '4px solid rgba(255,255,255,0.1)' }}>
             <div>
-              <div style={{ fontSize: '24px', fontWeight: '900', opacity: 0.5, letterSpacing: '4px', marginBottom: '12px' }}>TEMUKAN MASA DEPANMU</div>
-              <div style={{ fontSize: '56px', fontWeight: '900', color: 'white' }}>pmb.swadharma.ac.id</div>
+              <div style={{ fontSize: '26px', fontWeight: '900', opacity: 0.4, letterSpacing: '6px', marginBottom: '16px' }}>KLAIM MASA DEPANMU DI:</div>
+              <div style={{ fontSize: '64px', fontWeight: '900', color: 'white' }}>pmb.swadharma.ac.id</div>
             </div>
             <div style={{ textAlign: 'right' }}>
-              <div style={{ opacity: 0.5, fontSize: '22px', fontWeight: '800', marginBottom: '8px' }}>DITERBITKAN: {new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase()}</div>
-              <div style={{ fontSize: '28px', fontWeight: '900', color: topMajor.color }}>© ITB SWADHARMA 2026</div>
+              <div style={{ opacity: 0.5, fontSize: '24px', fontWeight: '800', marginBottom: '10px' }}>DITERBITKAN: {new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase()}</div>
+              <div style={{ fontSize: '32px', fontWeight: '900', color: topMajor.color }}>© ITB SWADHARMA 2026</div>
             </div>
           </div>
         </div>

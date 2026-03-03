@@ -52,17 +52,35 @@
   @apply glass hover:bg-white/[0.08] transition-all duration-500 hover:border-white/20;
 }
 
+/* Moving Gradient Border Effect */
+.animate-border-rainbow {
+  position: relative;
+  border: 2px solid transparent !important;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  background-image: linear-gradient(to right, #121418, #121418), 
+                    linear-gradient(90deg, #6BA9FF, #49CCE6, #8b5cf6, #6BA9FF);
+  background-size: 100% 100%, 400% 400%;
+  animation: border-gradient-move 4s linear infinite;
+}
+
+@keyframes border-gradient-move {
+  0% { background-position: 0% 0%, 0% 50%; }
+  50% { background-position: 0% 0%, 100% 50%; }
+  100% { background-position: 0% 0%, 0% 50%; }
+}
+
 /* Vibrant Mesh Animation */
 .bg-mesh-vibrant {
   background-color: #020617;
   background-image: 
-    radial-gradient(at 0% 0%, hsla(215, 100%, 71%, 0.15) 0px, transparent 50%),
-    radial-gradient(at 50% 0%, hsla(190, 77%, 59%, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(280, 65%, 60%, 0.15) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(160, 84%, 39%, 0.1) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(340, 75%, 55%, 0.1) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, hsla(215, 100%, 71%, 0.2) 0px, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(190, 77%, 59%, 0.2) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(280, 65%, 60%, 0.2) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(160, 84%, 39%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(340, 75%, 55%, 0.15) 0px, transparent 50%);
   background-size: 200% 200%;
-  animation: mesh-move 15s ease infinite alternate;
+  animation: mesh-move 10s ease infinite alternate;
 }
 
 @keyframes mesh-move {

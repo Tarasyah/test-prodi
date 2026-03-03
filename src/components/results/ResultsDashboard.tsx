@@ -6,7 +6,7 @@ import { MajorId } from '@/lib/major-matcher';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { Download, GraduationCap, ArrowRight, Printer, RefreshCcw, Sparkles, ShieldCheck, Globe } from 'lucide-react';
+import { Download, GraduationCap, ArrowRight, Printer, RefreshCcw, Sparkles, ShieldCheck, Globe, Zap, Heart, Star } from 'lucide-react';
 import html2canvas from 'html2canvas';
 
 interface ResultItem {
@@ -37,13 +37,13 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
     try {
       const canvas = await html2canvas(captureEl, {
         backgroundColor: '#020617',
-        scale: 4, // Ultra high quality
+        scale: 3, // High resolution for social media
         useCORS: true,
         logging: false,
       });
       
       const link = document.createElement('a');
-      link.download = `itb-swadharma-${userName.toLowerCase()}-future.png`;
+      link.download = `itb-swadharma-future-${userName.toLowerCase().replace(/\s+/g, '-')}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     } finally {
@@ -51,157 +51,212 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
     }
   };
 
+  const floatingElements = [
+    { icon: <Zap className="w-8 h-8" />, x: "10%", y: "20%", delay: 0 },
+    { icon: <Star className="w-6 h-6" />, x: "85%", y: "15%", delay: 1 },
+    { icon: <Heart className="w-5 h-5" />, x: "75%", y: "80%", delay: 2 },
+    { icon: <Sparkles className="w-7 h-7" />, x: "15%", y: "75%", delay: 0.5 },
+  ];
+
   return (
-    <div className="relative min-h-screen bg-mesh-animation overflow-hidden">
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 py-12 space-y-12">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-4"
+    <div className="relative min-h-screen bg-mesh-vibrant overflow-hidden">
+      {/* Floating Decorative Elements */}
+      {floatingElements.map((el, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0 }}
+          animate={{ 
+            opacity: [0.2, 0.5, 0.2],
+            y: [0, -20, 0],
+            rotate: [0, 10, -10, 0]
+          }}
+          transition={{ 
+            duration: 5 + i, 
+            repeat: Infinity, 
+            delay: el.delay,
+            ease: "easeInOut" 
+          }}
+          className="absolute z-0 text-primary/20 pointer-events-none"
+          style={{ left: el.x, top: el.y }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-4">
-            <Sparkles className="w-3 h-3" />
-            Analisis Berhasil Selesai
-          </div>
-          <h1 className="text-5xl md:text-6xl font-headline font-bold">
-            Hi {userName}, Ini Masa <span className="text-primary italic">Depanmu.</span>
+          {el.icon}
+        </motion.div>
+      ))}
+
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 py-16 space-y-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center space-y-6"
+        >
+          <motion.div 
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 4, repeat: Infinity }}
+            className="inline-flex items-center gap-3 px-6 py-2 rounded-full glass border-primary/30 text-primary text-sm font-black uppercase tracking-[0.3em] mb-4"
+          >
+            <Sparkles className="w-4 h-4 animate-pulse" />
+            Analysis Engine Complete
+          </motion.div>
+          <h1 className="text-6xl md:text-8xl font-headline font-bold tracking-tighter leading-none">
+            Hi {userName}, <br />
+            Masa <span className="text-primary italic">Depanmu</span> Adalah:
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Algoritma kami mendeteksi potensi terkuatmu ada pada bidang <span className="text-white font-bold">{topMajor.name}</span>.
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
+            Algoritma AI kami telah memetakan jalur karirmu. Potensi terkuatmu bersinar di bidang <span className="text-white font-black underline decoration-primary decoration-4 underline-offset-8">{topMajor.name}</span>.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Main Card */}
+          {/* Main Hero Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="lg:col-span-7"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-8 h-full"
           >
-            <div className="relative overflow-hidden rounded-[2.5rem] p-10 glass h-full border-white/5 flex flex-col group">
-              {/* Background Glow */}
+            <div className="relative overflow-hidden rounded-[3rem] p-12 glass h-full border-white/10 flex flex-col group">
+              {/* Dynamic Glow Background */}
               <div 
-                className="absolute -top-24 -right-24 w-96 h-96 blur-[120px] rounded-full opacity-30 transition-all duration-1000 group-hover:scale-110"
+                className="absolute -top-40 -right-40 w-[600px] h-[600px] blur-[160px] rounded-full opacity-40 transition-all duration-1000 group-hover:scale-125"
                 style={{ backgroundColor: topMajor.color }}
               />
               
-              <div className="relative z-10 flex-1 space-y-8">
+              <div className="relative z-10 flex-1 space-y-10">
                 <div className="flex justify-between items-start">
-                  <div className="space-y-1">
-                    <p className="text-xs font-bold tracking-[0.2em] text-white/40 uppercase">Rekomendasi Utama</p>
-                    <h2 className="text-5xl font-headline font-bold text-white tracking-tight">{topMajor.name}</h2>
+                  <div className="space-y-2">
+                    <p className="text-xs font-black tracking-[0.4em] text-primary uppercase">Main Future Path</p>
+                    <h2 className="text-6xl md:text-7xl font-headline font-bold text-white tracking-tighter">{topMajor.name}</h2>
                   </div>
-                  <div 
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg"
+                  <motion.div 
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="w-24 h-24 rounded-3xl flex items-center justify-center shadow-2xl relative"
                     style={{ backgroundColor: topMajor.color }}
                   >
-                    <GraduationCap className="w-8 h-8 text-background" />
+                    <GraduationCap className="w-12 h-12 text-background z-10" />
+                    <div className="absolute inset-0 rounded-3xl bg-white/20 blur-xl animate-pulse" />
+                  </motion.div>
+                </div>
+
+                <div className="flex items-center gap-8">
+                  <div className="flex items-baseline gap-2">
+                    <motion.span 
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      className="text-9xl font-headline font-bold text-primary"
+                    >
+                      {topMajor.percentage}
+                    </motion.span>
+                    <span className="text-4xl font-bold text-primary/40">%</span>
+                  </div>
+                  <div className="h-24 w-px bg-white/10" />
+                  <div className="space-y-1">
+                    <p className="text-sm text-white/60 font-black uppercase tracking-[0.2em]">Match Score</p>
+                    <p className="text-lg text-muted-foreground font-medium leading-tight">
+                      Kecocokan Profil <br />Psikometrik Digital
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-6">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-8xl font-headline font-bold text-primary">{topMajor.percentage}</span>
-                    <span className="text-2xl font-bold text-primary/50">%</span>
-                  </div>
-                  <div className="h-16 w-px bg-white/10" />
-                  <p className="text-sm text-muted-foreground font-medium uppercase tracking-widest leading-relaxed">
-                    Tingkat Kecocokan<br />dengan Profil Minat
-                  </p>
-                </div>
-
-                <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 relative">
-                  <p className="text-xl text-white/90 leading-relaxed italic">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="p-8 rounded-[2rem] bg-white/[0.04] border border-white/10 relative overflow-hidden"
+                >
+                  <p className="text-2xl text-white/90 leading-relaxed italic font-medium relative z-10">
                     "{topMajor.description}"
                   </p>
-                </div>
+                  <div className="absolute top-4 left-4 text-primary/10 font-serif text-8xl leading-none">"</div>
+                </motion.div>
 
-                <div className="pt-4 flex flex-wrap gap-4 no-print">
+                <div className="pt-6 flex flex-wrap gap-6 no-print">
                   <Button 
                     size="lg" 
-                    className="h-14 bg-primary text-background font-bold text-lg hover:scale-105 transition-transform px-8 rounded-2xl shadow-xl shadow-primary/20"
+                    className="h-16 bg-primary text-background font-black text-xl hover:scale-105 transition-all px-12 rounded-2xl shadow-2xl shadow-primary/30"
                     asChild
                   >
                     <a href="https://pmb.swadharma.ac.id" target="_blank" rel="noopener noreferrer">
-                      Wujudkan Impianmu
-                      <ArrowRight className="ml-2 w-5 h-5" />
+                      DAFTAR SEKARANG
+                      <ArrowRight className="ml-3 w-7 h-7" />
                     </a>
                   </Button>
-                  <div className="flex gap-3">
+                  <div className="flex gap-4">
                     <Button 
                       size="icon" 
                       variant="outline" 
-                      className="w-14 h-14 rounded-2xl border-white/10 bg-white/5 hover:bg-white/10"
+                      className="w-16 h-16 rounded-2xl border-white/10 bg-white/5 hover:bg-white/15 hover:border-white/30"
                       onClick={handleDownload}
+                      title="Unduh Hasil 4:5"
                     >
-                      <Download className="w-6 h-6" />
+                      <Download className="w-7 h-7" />
                     </Button>
                     <Button 
                       size="icon" 
                       variant="outline" 
-                      className="w-14 h-14 rounded-2xl border-white/10 bg-white/5 hover:bg-white/10"
+                      className="w-16 h-16 rounded-2xl border-white/10 bg-white/5 hover:bg-white/15"
                       onClick={() => window.print()}
+                      title="Cetak Laporan"
                     >
-                      <Printer className="w-6 h-6" />
+                      <Printer className="w-7 h-7" />
                     </Button>
                     <Button 
                       size="icon" 
                       variant="secondary" 
-                      className="w-14 h-14 rounded-2xl bg-white/5 hover:bg-white/10 text-white"
+                      className="w-16 h-16 rounded-2xl bg-white/5 hover:bg-red-500/20 hover:text-red-400 transition-colors"
                       onClick={onRetake}
+                      title="Tes Ulang"
                     >
-                      <RefreshCcw className="w-6 h-6" />
+                      <RefreshCcw className="w-7 h-7" />
                     </Button>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-12 pt-8 border-t border-white/5 flex justify-between items-center text-white/40">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black text-white text-lg">S</div>
+              <div className="mt-16 pt-10 border-t border-white/5 flex justify-between items-end text-white/30">
+                <div className="flex items-center gap-5">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center font-black text-primary text-2xl border border-primary/20">S</div>
                   <div>
-                    <p className="text-[10px] font-bold tracking-widest uppercase">Pendidikan Berkualitas</p>
-                    <p className="text-sm font-headline font-bold text-white/80">ITB SWADHARMA</p>
+                    <p className="text-[10px] font-black tracking-[0.3em] uppercase mb-1">Official Results From</p>
+                    <p className="text-xl font-headline font-bold text-white/80 tracking-wide">ITB SWADHARMA</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-[10px] font-bold tracking-widest uppercase">Versi Analisis</p>
-                  <p className="text-sm font-bold text-white/80">2026.12.v1</p>
+                  <p className="text-[10px] font-black tracking-[0.3em] uppercase mb-1">Analysis ID</p>
+                  <p className="text-xl font-headline font-bold text-white/80 tracking-wide">SWD-2026-{Math.random().toString(36).substring(7).toUpperCase()}</p>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Stats Card */}
+          {/* Stats & Alternates */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="lg:col-span-5 flex flex-col gap-8"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="lg:col-span-4 flex flex-col gap-8"
           >
-            <Card className="glass border-white/5 overflow-hidden flex-1 rounded-[2.5rem]">
-              <CardContent className="p-8 flex flex-col h-full">
-                <div className="flex justify-between items-center mb-8">
-                  <h3 className="text-xl font-headline font-bold">Analisis Komparatif</h3>
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <ShieldCheck className="w-5 h-5 text-primary" />
-                  </div>
+            <Card className="glass border-white/10 overflow-hidden flex-1 rounded-[3rem] p-4">
+              <CardContent className="p-8 flex flex-col h-full space-y-8">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-2xl font-headline font-bold">Data Analysis</h3>
+                  <Zap className="w-6 h-6 text-primary animate-pulse" />
                 </div>
                 
-                <div className="flex-1 min-h-[300px]">
+                <div className="flex-1 min-h-[350px]">
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={results} layout="vertical" margin={{ left: -20, right: 30 }}>
+                    <BarChart data={results} layout="vertical" margin={{ left: -10, right: 40 }}>
                       <XAxis type="number" hide />
                       <YAxis 
                         dataKey="name" 
                         type="category" 
-                        width={120}
+                        width={130}
                         axisLine={false}
                         tickLine={false}
-                        tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: 12, fontWeight: 600 }}
+                        tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 13, fontWeight: 700 }}
                       />
-                      <Bar dataKey="percentage" radius={[0, 8, 8, 0]} barSize={24}>
+                      <Bar dataKey="percentage" radius={[0, 12, 12, 0]} barSize={32}>
                         {results.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
@@ -210,122 +265,135 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
                   </ResponsiveContainer>
                 </div>
 
-                <div className="mt-8 p-6 rounded-2xl bg-primary/5 border border-primary/10">
-                  <div className="flex gap-4 items-center">
-                    <Globe className="w-8 h-8 text-primary opacity-50" />
-                    <p className="text-xs text-primary/80 leading-relaxed font-medium">
-                      Kurikulum kami dirancang untuk memastikan kecocokan profilmu dengan kebutuhan industri global saat ini.
-                    </p>
-                  </div>
+                <div className="p-6 rounded-[2rem] bg-primary/10 border border-primary/20 flex gap-5 items-center">
+                  <Globe className="w-10 h-10 text-primary shrink-0" />
+                  <p className="text-sm text-primary-foreground font-bold leading-relaxed">
+                    Kurikulum 2026 kami memastikan kamu siap bersaing di level internasional.
+                  </p>
                 </div>
               </CardContent>
             </Card>
           </motion.div>
         </div>
 
-        {/* Footer Results */}
+        {/* Career Alternatives */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="space-y-10"
         >
-          <div className="flex items-center gap-4 mb-6">
+          <div className="flex items-center gap-8">
             <div className="h-px flex-1 bg-white/10" />
-            <h3 className="text-sm font-bold tracking-[0.3em] uppercase text-white/40">Alternatif Karier</h3>
+            <h3 className="text-xs font-black tracking-[0.5em] uppercase text-primary">Secondary Career Paths</h3>
             <div className="h-px flex-1 bg-white/10" />
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {results.slice(1, 5).map((major) => (
-              <div key={major.id} className="glass p-6 rounded-3xl border-white/5 hover:border-white/20 transition-all group cursor-default">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-[10px] font-black px-2 py-0.5 rounded bg-white/5" style={{ color: major.color }}>{major.percentage}%</span>
-                </div>
-                <h4 className="font-headline font-bold text-base text-white/90 group-hover:text-primary transition-colors">{major.name}</h4>
-              </div>
-            ))}
           </div>
           
-          <div className="flex justify-center mt-12 no-print">
-            <Button variant="ghost" className="text-white/40 hover:text-white" onClick={onRetake}>
-              <RefreshCcw className="w-4 h-4 mr-2" />
-              Mulai Ulang Tes
-            </Button>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {results.slice(1, 5).map((major, i) => (
+              <motion.div 
+                key={major.id} 
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="glass p-8 rounded-[2.5rem] border-white/5 hover:border-white/20 transition-all group cursor-default relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 blur-3xl opacity-10 group-hover:opacity-30 transition-opacity" style={{ backgroundColor: major.color }} />
+                <div className="flex justify-between items-center mb-6">
+                  <span className="text-xs font-black px-3 py-1 rounded-full bg-white/5 border border-white/10" style={{ color: major.color }}>{major.percentage}% Match</span>
+                </div>
+                <h4 className="font-headline font-bold text-xl text-white group-hover:text-primary transition-colors">{major.name}</h4>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
+
+        <div className="flex justify-center pt-12 no-print">
+          <Button 
+            variant="ghost" 
+            size="lg"
+            className="text-white/40 hover:text-white hover:bg-white/5 rounded-2xl h-14 px-8" 
+            onClick={onRetake}
+          >
+            <RefreshCcw className="w-5 h-5 mr-3" />
+            Ulangi Analisis dari Awal
+          </Button>
+        </div>
       </div>
 
-      {/* Premium 4:5 Template for Download */}
+      {/* PREMIUM 4:5 Template for Download - 1080x1350 */}
       <div 
         ref={shareCardRef}
         style={{ 
           display: 'none', 
           width: '1080px', 
           height: '1350px',
-          padding: '100px',
+          padding: '120px',
           flexDirection: 'column',
-          background: 'linear-gradient(180deg, #020617 0%, #0a0a0a 100%)',
+          background: '#020617',
           color: 'white',
           position: 'fixed',
           left: '-5000px',
           fontFamily: 'Space Grotesk, sans-serif'
         }}
       >
-        {/* Background Decorative Elements */}
-        <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '600px', height: '600px', background: topMajor.color, borderRadius: '50%', filter: 'blur(150px)', opacity: 0.2 }} />
-        <div style={{ position: 'absolute', bottom: '0', left: '0', width: '100%', height: '100%', background: 'radial-gradient(circle at center, transparent, rgba(0,0,0,0.8))', pointerEvents: 'none' }} />
+        {/* Layered Background Design */}
+        <div style={{ position: 'absolute', top: '-20%', right: '-20%', width: '800px', height: '800px', background: topMajor.color, borderRadius: '50%', filter: 'blur(200px)', opacity: 0.3 }} />
+        <div style={{ position: 'absolute', bottom: '-10%', left: '-10%', width: '600px', height: '600px', background: '#3b82f6', borderRadius: '50%', filter: 'blur(180px)', opacity: 0.15 }} />
         
-        {/* Pattern Dots */}
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.05, backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        {/* Tech Grid Pattern */}
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.05, backgroundImage: 'radial-gradient(circle, white 2px, transparent 2px)', backgroundSize: '60px 60px' }} />
 
         <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-          {/* Header */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-              <div style={{ width: '80px', height: '80px', background: topMajor.color, borderRadius: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '36px', fontWeight: '900', color: '#020617', boxShadow: `0 20px 40px ${topMajor.color}33` }}>S</div>
+          {/* Brand Header */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+              <div style={{ width: '100px', height: '100px', background: topMajor.color, borderRadius: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '48px', fontWeight: '900', color: '#020617', boxShadow: `0 30px 60px ${topMajor.color}44` }}>S</div>
               <div>
-                <div style={{ fontSize: '32px', fontWeight: '800', letterSpacing: '4px' }}>ITB SWADHARMA</div>
-                <div style={{ fontSize: '16px', opacity: 0.5, letterSpacing: '6px' }}>MAJOR MATCHING 2026</div>
+                <div style={{ fontSize: '38px', fontWeight: '800', letterSpacing: '6px' }}>ITB SWADHARMA</div>
+                <div style={{ fontSize: '18px', opacity: 0.6, letterSpacing: '10px' }}>FUTURE ENGINE v2.0</div>
               </div>
             </div>
-            <div style={{ padding: '12px 24px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', fontSize: '20px', fontWeight: 'bold' }}>CERTIFIED RESULT</div>
+            <div style={{ padding: '20px 40px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.2)', background: 'rgba(255,255,255,0.05)', fontSize: '24px', fontWeight: '900', color: topMajor.color }}>2026 CERTIFIED</div>
           </div>
 
-          {/* Body */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
+          {/* Main Hero Content */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
             <div>
-              <div style={{ fontSize: '36px', opacity: 0.6, marginBottom: '16px', fontWeight: '500' }}>Hello {userName}, Your Ideal Future is...</div>
-              <div style={{ fontSize: '110px', fontWeight: '900', lineHeight: 1, letterSpacing: '-2px', color: 'white' }}>
+              <div style={{ fontSize: '42px', opacity: 0.7, marginBottom: '24px', fontWeight: '500', letterSpacing: '2px' }}>Personal Analysis for <span style={{ color: 'white', fontWeight: '900' }}>{userName}</span></div>
+              <div style={{ fontSize: '120px', fontWeight: '900', lineHeight: 0.9, letterSpacing: '-4px' }}>
                 {topMajor.name.split(' ').map((word, i) => (
                   <span key={i} style={{ display: 'block', color: i === 1 ? topMajor.color : 'white' }}>{word}</span>
                 ))}
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
-              <div style={{ fontSize: '180px', fontWeight: '900', color: topMajor.color, lineHeight: 1 }}>{topMajor.percentage}%</div>
-              <div style={{ height: '140px', width: '4px', background: 'rgba(255,255,255,0.1)' }} />
-              <div style={{ fontSize: '28px', maxWidth: '300px', opacity: 0.8, lineHeight: 1.4, fontWeight: '600' }}>
-                Compatibility score based on your personality & passion profile.
+            <div style={{ display: 'flex', gap: '60px', alignItems: 'center' }}>
+              <div style={{ fontSize: '240px', fontWeight: '900', color: topMajor.color, lineHeight: 0.8 }}>{topMajor.percentage}%</div>
+              <div style={{ height: '200px', width: '6px', background: 'rgba(255,255,255,0.15)', borderRadius: '10px' }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div style={{ fontSize: '32px', fontWeight: '900', color: 'white' }}>PSYCHOMETRIC MATCH</div>
+                <div style={{ fontSize: '28px', maxWidth: '380px', opacity: 0.7, lineHeight: 1.4, fontWeight: '500' }}>
+                  Sangat cocok dengan aspirasi dan profil kognitif digital kamu.
+                </div>
               </div>
             </div>
 
-            <div style={{ padding: '60px', background: 'rgba(255,255,255,0.03)', borderRadius: '48px', border: `1px solid rgba(255,255,255,0.08)`, position: 'relative' }}>
-              <div style={{ position: 'absolute', top: '30px', left: '30px', opacity: 0.2 }}><Sparkles size={40} /></div>
-              <div style={{ fontSize: '32px', lineHeight: 1.6, textAlign: 'center', fontStyle: 'italic', color: 'rgba(255,255,255,0.9)' }}>
+            <div style={{ padding: '80px', background: 'rgba(255,255,255,0.04)', borderRadius: '64px', border: `2px solid rgba(255,255,255,0.1)`, position: 'relative' }}>
+              <div style={{ position: 'absolute', top: '40px', left: '40px', opacity: 0.3, color: topMajor.color }}><Sparkles size={60} /></div>
+              <div style={{ fontSize: '36px', lineHeight: 1.6, textAlign: 'center', fontStyle: 'italic', color: 'rgba(255,255,255,0.95)', fontWeight: '500' }}>
                 "{topMajor.description}"
               </div>
             </div>
           </div>
 
-          {/* Footer */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', paddingTop: '40px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+          {/* Social Proof Footer */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', paddingTop: '60px', borderTop: '2px solid rgba(255,255,255,0.1)' }}>
             <div>
-              <div style={{ fontSize: '20px', fontWeight: '800', opacity: 0.4, letterSpacing: '2px', marginBottom: '8px' }}>EXPLORE NOW</div>
-              <div style={{ fontSize: '42px', fontWeight: '900' }}>pmb.swadharma.ac.id</div>
+              <div style={{ fontSize: '24px', fontWeight: '900', opacity: 0.5, letterSpacing: '4px', marginBottom: '12px' }}>TEMUKAN MASA DEPANMU</div>
+              <div style={{ fontSize: '56px', fontWeight: '900', color: 'white' }}>pmb.swadharma.ac.id</div>
             </div>
             <div style={{ textAlign: 'right' }}>
-              <div style={{ opacity: 0.4, fontSize: '18px', fontWeight: 'bold' }}>ISSUE DATE: {new Date().toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' })}</div>
-              <div style={{ fontSize: '20px', fontWeight: '900', color: topMajor.color }}>© ITB SWADHARMA 2026</div>
+              <div style={{ opacity: 0.5, fontSize: '22px', fontWeight: '800', marginBottom: '8px' }}>DITERBITKAN: {new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase()}</div>
+              <div style={{ fontSize: '28px', fontWeight: '900', color: topMajor.color }}>© ITB SWADHARMA 2026</div>
             </div>
           </div>
         </div>

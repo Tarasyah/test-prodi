@@ -23,7 +23,7 @@
     --border: 217 19% 20%;
     --input: 217 19% 20%;
     --ring: 215 100% 71%;
-    --radius: 1.5rem;
+    --radius: 1.25rem;
     --chart-1: 215 100% 71%;
     --chart-2: 190 77% 59%;
     --chart-3: 160 84% 39%;
@@ -37,7 +37,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body selection:bg-primary/30;
+    @apply bg-background text-foreground font-body selection:bg-primary/30 antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline;
@@ -45,56 +45,45 @@
 }
 
 .glass {
-  @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-2xl;
+  @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-lg;
 }
 
-.glass-interactive {
-  @apply glass hover:bg-white/[0.08] transition-all duration-500 hover:border-white/20;
-}
-
-/* Moving Gradient Border Effect */
+/* Optimized Border Animation */
 .animate-border-rainbow {
   position: relative;
-  border: 2px solid transparent !important;
+  border: 1px solid transparent !important;
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
-  background-image: linear-gradient(to right, #121418, #121418), 
+  background-image: linear-gradient(to right, #0a0c10, #0a0c10), 
                     linear-gradient(90deg, #6BA9FF, #49CCE6, #8b5cf6, #6BA9FF);
   background-size: 100% 100%, 400% 400%;
-  animation: border-gradient-move 4s linear infinite;
+  animation: border-move 6s linear infinite;
+  will-change: background-position;
 }
 
-@keyframes border-gradient-move {
-  0% { background-position: 0% 0%, 0% 50%; }
-  50% { background-position: 0% 0%, 100% 50%; }
-  100% { background-position: 0% 0%, 0% 50%; }
+@keyframes border-move {
+  to { background-position: 0% 0%, 400% 50%; }
 }
 
-/* Vibrant Mesh Animation */
+/* Smooth Vibrant Mesh Animation */
 .bg-mesh-vibrant {
   background-color: #020617;
   background-image: 
-    radial-gradient(at 0% 0%, hsla(215, 100%, 71%, 0.2) 0px, transparent 50%),
-    radial-gradient(at 50% 0%, hsla(190, 77%, 59%, 0.2) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(280, 65%, 60%, 0.2) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(160, 84%, 39%, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(340, 75%, 55%, 0.15) 0px, transparent 50%);
-  background-size: 200% 200%;
-  animation: mesh-move 10s ease infinite alternate;
+    radial-gradient(at 0% 0%, hsla(215, 100%, 71%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(190, 77%, 59%, 0.1) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, hsla(280, 65%, 60%, 0.1) 0px, transparent 50%);
+  background-size: 150% 150%;
+  animation: mesh-slow 15s ease infinite alternate;
+  will-change: background-position;
 }
 
-@keyframes mesh-move {
+@keyframes mesh-slow {
   0% { background-position: 0% 0%; }
-  50% { background-position: 100% 100%; }
-  100% { background-position: 0% 100%; }
+  100% { background-position: 100% 100%; }
 }
 
 @media print {
   .no-print {
     display: none !important;
-  }
-  body {
-    background: white !important;
-    color: black !important;
   }
 }

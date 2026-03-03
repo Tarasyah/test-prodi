@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -34,6 +33,11 @@ export default function Home() {
     setTimeout(() => {
       setAppState('results');
     }, 5000);
+  };
+
+  const handleRetake = () => {
+    setAppState('intro');
+    setResults([]);
   };
 
   return (
@@ -137,7 +141,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             className="relative z-10"
           >
-            <ResultsDashboard userName={userName} results={results} />
+            <ResultsDashboard userName={userName} results={results} onRetake={handleRetake} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -145,7 +149,7 @@ export default function Home() {
       {/* Footer Branding */}
       {appState !== 'loading' && (
         <footer className="relative z-10 py-12 text-center text-muted-foreground/40 text-sm no-print">
-          <p>© 2024 Institut Teknologi dan Bisnis Swadharma. All Rights Reserved.</p>
+          <p>© 2026 Institut Teknologi dan Bisnis Swadharma. All Rights Reserved.</p>
         </footer>
       )}
     </main>

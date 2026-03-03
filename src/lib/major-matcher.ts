@@ -1,4 +1,3 @@
-
 export type MajorId = 'ti' | 'si' | 'mn' | 'ak' | 'bd';
 
 export interface Major {
@@ -13,31 +12,31 @@ export const MAJORS: Record<MajorId, Major> = {
     id: 'ti',
     name: 'Teknik Informatika',
     description: 'Fokus pada pengembangan perangkat lunak, algoritma, dan keamanan siber.',
-    color: '#6BA9FF',
+    color: '#3b82f6', // Modern Blue
   },
   si: {
     id: 'si',
     name: 'Sistem Informasi',
     description: 'Jembatan antara teknologi dan bisnis untuk mengelola data strategis.',
-    color: '#49CCE6',
+    color: '#06b6d4', // Cyan
   },
   mn: {
     id: 'mn',
     name: 'Manajemen',
     description: 'Mempelajari pengelolaan organisasi, strategi bisnis, dan kepemimpinan.',
-    color: '#60A5FA',
+    color: '#8b5cf6', // Violet
   },
   ak: {
     id: 'ak',
     name: 'Akuntansi',
     description: 'Keahlian dalam pelaporan keuangan, audit, dan perpajakan perusahaan.',
-    color: '#38BDF8',
+    color: '#f59e0b', // Amber
   },
   bd: {
     id: 'bd',
     name: 'Bisnis Digital',
     description: 'Menggabungkan strategi bisnis dengan teknologi pemasaran digital modern.',
-    color: '#2DD4BF',
+    color: '#10b981', // Emerald
   },
 };
 

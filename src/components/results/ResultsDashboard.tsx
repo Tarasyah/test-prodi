@@ -6,7 +6,7 @@ import { MajorId } from '@/lib/major-matcher';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell } from 'recharts';
-import { Download, GraduationCap, ArrowRight, Printer, RefreshCcw, Sparkles, Globe, Zap, Heart, Star } from 'lucide-react';
+import { Download, GraduationCap, ArrowRight, Printer, RefreshCcw, Sparkles, Zap, Heart, Star } from 'lucide-react';
 import html2canvas from 'html2canvas';
 
 interface ResultItem {
@@ -209,13 +209,6 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
                       </Bar>
                     </BarChart>
                   </ResponsiveContainer>
-                </div>
-
-                <div className="p-6 rounded-2xl bg-primary/10 border border-primary/20 flex gap-4 items-center">
-                  <Globe className="w-8 h-8 text-primary shrink-0" />
-                  <p className="text-xs text-white/80 font-bold leading-relaxed">
-                    Kurikulum Hybrid 2026 siap mengantarkanmu ke kancah global.
-                  </p>
                 </div>
               </CardContent>
             </Card>

@@ -6,6 +6,7 @@ import { QUIZ_QUESTIONS } from '@/lib/major-matcher';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { ChevronRight, ArrowLeft, Sparkles } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface QuizFlowProps {
   onComplete: (answers: number[]) => void;
@@ -38,59 +39,65 @@ export const QuizFlow: React.FC<QuizFlowProps> = ({ onComplete }) => {
   const currentQuestion = QUIZ_QUESTIONS[currentIndex];
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-6 py-20">
-      <div className="mb-12 space-y-6">
-        <div className="flex justify-between items-end text-sm font-black text-primary uppercase tracking-[0.4em]">
+    <div className="w-full max-w-4xl mx-auto px-6 py-12 md:py-16">
+      <div className="mb-8 space-y-4">
+        <div className="flex justify-between items-end text-[10px] font-black text-primary uppercase tracking-[0.4em]">
           <div className="flex items-center gap-3">
             <Sparkles className="w-4 h-4 animate-pulse" />
-            <span>Phase {currentIndex + 1} of {QUIZ_QUESTIONS.length}</span>
+            <span>Phase {currentIndex + 1} / {QUIZ_QUESTIONS.length}</span>
           </div>
           <span>{Math.round(progress)}% Sync</span>
         </div>
-        <Progress value={progress} className="h-3 bg-white/10" />
+        <Progress value={progress} className="h-2 bg-white/10" />
       </div>
 
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
-          transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className="animate-border-rainbow p-12 rounded-[3.5rem] shadow-2xl"
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.02 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="animate-border-rainbow p-8 md:p-10 rounded-[2.5rem] shadow-2xl bg-black/40 backdrop-blur-sm"
         >
-          <div className="mb-10">
-            <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4 leading-tight text-white">
+          <div className="mb-8">
+            <h2 className="text-2xl md:text-3xl font-headline font-bold mb-4 leading-tight text-white">
               {currentQuestion.text}
             </h2>
-            <div className="h-1 w-20 bg-primary/50 rounded-full" />
+            <div className="h-1 w-16 bg-primary/50 rounded-full" />
           </div>
 
-          <div className="space-y-6">
-            {currentQuestion.options.map((option, idx) => (
-              <motion.button
-                key={idx}
-                whileHover={{ scale: 1.02, x: 10 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => handleSelect(idx)}
-                className="w-full text-left p-6 rounded-[2rem] border border-white/10 bg-white/5 hover:bg-primary/20 hover:border-primary/50 transition-all group flex justify-between items-center relative overflow-hidden shadow-lg"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="text-xl font-medium relative z-10">{option.text}</span>
-                <ChevronRight className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-all text-primary relative z-10 translate-x-[-10px] group-hover:translate-x-0" />
-              </motion.button>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {currentQuestion.options.map((option, idx) => {
+              const isLastOdd = currentQuestion.options.length % 2 !== 0 && idx === currentQuestion.options.length - 1;
+              return (
+                <motion.button
+                  key={idx}
+                  whileHover={{ scale: 1.01, x: 5 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => handleSelect(idx)}
+                  className={cn(
+                    "w-full text-left p-5 rounded-2xl border border-white/10 bg-white/5 hover:bg-primary/20 hover:border-primary/50 transition-all group flex justify-between items-center relative overflow-hidden shadow-md",
+                    isLastOdd && "md:col-span-2"
+                  )}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="text-base md:text-lg font-medium relative z-10 pr-4 leading-snug">{option.text}</span>
+                  <ChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all text-primary relative z-10 translate-x-[-10px] group-hover:translate-x-0 shrink-0" />
+                </motion.button>
+              );
+            })}
           </div>
 
-          <div className="mt-12 pt-8 border-t border-white/10 flex justify-start">
+          <div className="mt-8 pt-6 border-t border-white/10 flex justify-start">
             {currentIndex > 0 && (
               <Button
                 variant="ghost"
                 onClick={goBack}
-                className="text-white/40 hover:text-white hover:bg-white/5 rounded-xl h-12 px-6 transition-all"
+                className="text-white/40 hover:text-white hover:bg-white/5 rounded-xl h-10 px-4 transition-all text-xs font-bold tracking-widest"
               >
-                <ArrowLeft className="w-5 h-5 mr-3" />
-                KEMBALI KE SEBELUMNYA
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                KEMBALI
               </Button>
             )}
           </div>

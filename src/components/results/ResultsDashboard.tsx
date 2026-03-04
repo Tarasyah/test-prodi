@@ -92,7 +92,7 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
             <Sparkles className="w-4 h-4" />
             Analysis Complete
           </div>
-          <h1 className="text-4xl md:text-6xl font-headline font-bold tracking-tighter leading-tight text-white max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-headline font-bold tracking-tighter leading-tight text-white max-w-4xl mx-auto">
             Hi {userName}, <br />
             Masa <span className="text-primary italic">Depanmu</span> Di Bidang:
           </h1>
@@ -115,7 +115,7 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
                 <div className="flex justify-between items-start">
                   <div className="space-y-2">
                     <p className="text-[10px] font-black tracking-[0.4em] text-primary uppercase">Rekomendasi Utama</p>
-                    <h2 className="text-5xl md:text-6xl font-headline font-bold text-white tracking-tighter">{topMajor.name}</h2>
+                    <h2 className="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter">{topMajor.name}</h2>
                   </div>
                   <div 
                     className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl"
@@ -128,7 +128,7 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
                 <div className="flex items-center gap-8">
                   <div className="flex flex-col">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-8xl font-headline font-bold text-primary leading-none">{topMajor.percentage}</span>
+                      <span className="text-7xl md:text-8xl font-headline font-bold text-primary leading-none">{topMajor.percentage}</span>
                       <span className="text-3xl font-bold text-primary/40">%</span>
                     </div>
                     <span className="text-[10px] font-black text-primary/60 tracking-widest mt-2 uppercase">Skor Kecocokan Tertinggi</span>
@@ -279,27 +279,27 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
         <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 10 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
-              <img src="/logoitbs.webp" alt="ITB Swadharma" style={{ width: '100px', height: 'auto', objectFit: 'contain' }} />
+              <img src="/logoitbs.webp" alt="ITB Swadharma" style={{ width: '100px', height: '100px', objectFit: 'contain' }} />
               <div>
                 <div style={{ fontSize: '36px', fontWeight: '900', letterSpacing: '4px' }}>ITB SWADHARMA</div>
                 <div style={{ fontSize: '16px', opacity: 0.5, letterSpacing: '8px' }}>NEURAL ENGINE 2026</div>
               </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '60px', fontSize: '20px', fontWeight: '900', color: topMajor.color, border: `2px solid ${topMajor.color}`, padding: '0 30px', borderRadius: '20px' }}>OFFICIAL RESULT</div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '60px', fontSize: '20px', fontWeight: '900', color: topMajor.color, border: `2px solid ${topMajor.color}`, padding: '0 30px', borderRadius: '20px', marginTop: '10px' }}>OFFICIAL RESULT</div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', marginTop: '-20px' }}>
-            <div>
-              <div style={{ fontSize: '32px', opacity: 0.6, marginBottom: '16px', fontWeight: '500' }}>POTENSI MASA DEPAN {userName.toUpperCase()}:</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', marginTop: '20px' }}>
+            <div style={{ padding: '0 20px' }}>
+              <div style={{ fontSize: '32px', opacity: 0.6, marginBottom: '24px', fontWeight: '500' }}>POTENSI MASA DEPAN {userName.toUpperCase()}:</div>
               <div style={{ fontSize: '100px', fontWeight: '900', lineHeight: 1, letterSpacing: '-4px', color: 'white' }}>
                 {topMajor.name}
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '60px', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '50px', borderRadius: '50px', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <div style={{ display: 'flex', gap: '60px', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '50px', borderRadius: '50px', border: '1px solid rgba(255,255,255,0.1)', margin: '0 20px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <div style={{ fontSize: '180px', fontWeight: '900', color: topMajor.color, lineHeight: 0.8 }}>{topMajor.percentage}%</div>
-                <div style={{ fontSize: '14px', fontWeight: '900', color: topMajor.color, letterSpacing: '2px', marginTop: '15px' }}>SKOR KECOCOKAN TERTINGGI</div>
+                <div style={{ fontSize: '14px', fontWeight: '900', color: topMajor.color, letterSpacing: '2px', marginTop: '25px' }}>SKOR KECOCOKAN TERTINGGI</div>
               </div>
               <div style={{ width: '2px', height: '150px', background: 'rgba(255,255,255,0.1)' }} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', flex: 1 }}>
@@ -318,17 +318,17 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
               </div>
             </div>
 
-            <div style={{ padding: '50px', background: `${topMajor.color}11`, borderRadius: '40px', border: `1px solid ${topMajor.color}33` }}>
+            <div style={{ padding: '50px', background: `${topMajor.color}11`, borderRadius: '40px', border: `1px solid ${topMajor.color}33`, margin: '0 20px' }}>
               <div style={{ fontSize: '32px', lineHeight: 1.5, textAlign: 'center', fontStyle: 'italic', fontWeight: '500', color: 'white' }}>
                 "{topMajor.description}"
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '40px', borderTop: '2px solid rgba(255,255,255,0.1)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '40px', borderTop: '2px solid rgba(255,255,255,0.1)', margin: '0 20px 20px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <div style={{ fontSize: '18px', opacity: 0.4, fontWeight: '700' }}>SIAP MELANGKAH?</div>
-              <div style={{ background: 'white', color: '#020617', padding: '15px 40px', borderRadius: '15px', fontSize: '32px', fontWeight: '900', display: 'flex', alignItems: 'center', gap: '15px' }}>
+              <div style={{ background: 'white', color: '#020617', padding: '15px 40px', borderRadius: '15px', fontSize: '32px', fontWeight: '900', display: 'flex', alignItems: 'center', gap: '15px', boxShadow: '0 10px 30px rgba(0,0,0,0.3)' }}>
                 DAFTAR SEKARANG <ArrowRight size={32} />
               </div>
             </div>

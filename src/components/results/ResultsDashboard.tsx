@@ -89,7 +89,7 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
           animate={{ opacity: 1, y: 0 }}
           className="flex flex-col items-center gap-4 text-center"
         >
-          <img src="/logoitbs.webp" alt="Logo ITB Swadharma" className="w-16 h-16 object-contain" />
+          <img src="/logoitbs.webp" alt="Logo ITB Swadharma" className="w-20 h-20 object-contain" />
           <div className="space-y-1">
             <h3 className="text-sm font-black tracking-[0.4em] uppercase text-white">ITB Swadharma</h3>
             <p className="text-[10px] font-medium tracking-[0.2em] text-primary/60 uppercase">Neural Engine 2026</p>
@@ -105,7 +105,7 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
             <Sparkles className="w-4 h-4" />
             Analysis Complete
           </div>
-          <h1 className="text-3xl md:text-5xl font-headline font-bold tracking-tighter leading-tight text-white max-w-4xl mx-auto">
+          <h1 className="text-3xl md:text-5xl font-headline font-bold tracking-tighter leading-tight text-white max-w-4xl mx-auto text-center">
             Hi {userName}, Masa <span className="text-primary italic">Depanmu</span> Di:
           </h1>
         </motion.div>
@@ -117,74 +117,67 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
             animate={{ opacity: 1, scale: 1 }}
             className="md:col-span-8"
           >
-            <div className="relative overflow-hidden rounded-[3rem] p-8 md:p-10 animate-border-rainbow h-full flex flex-col group shadow-2xl">
+            <div className="relative overflow-hidden rounded-[3rem] p-8 md:p-10 animate-border-rainbow h-full flex flex-col group shadow-2xl items-center text-center">
               <div 
                 className="absolute -top-40 -right-40 w-[600px] h-[600px] blur-[150px] rounded-full opacity-20"
                 style={{ backgroundColor: topMajor.color }}
               />
               
-              <div className="relative z-10 flex-1 space-y-6">
-                <div className="flex justify-between items-start">
-                  <div className="space-y-2">
-                    <p className="text-[10px] font-black tracking-[0.4em] text-primary uppercase">Rekomendasi Utama</p>
-                    <h2 className="text-3xl md:text-5xl font-headline font-bold text-white tracking-tighter">{topMajor.name}</h2>
-                  </div>
+              <div className="relative z-10 flex-1 space-y-8 w-full">
+                <div className="flex flex-col items-center space-y-4">
                   <div 
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl mb-2"
                     style={{ backgroundColor: topMajor.color }}
                   >
-                    <GraduationCap className="w-8 h-8 text-background" />
+                    <GraduationCap className="w-10 h-10 text-background" />
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-black tracking-[0.4em] text-primary uppercase">Rekomendasi Utama</p>
+                    <h2 className="text-4xl md:text-6xl font-headline font-bold text-white tracking-tighter">{topMajor.name}</h2>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-8">
-                  <div className="flex flex-col">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-6xl md:text-8xl font-headline font-bold text-primary leading-none">{topMajor.percentage}</span>
-                      <span className="text-2xl font-bold text-primary/40">%</span>
-                    </div>
-                    <span className="text-[10px] font-black text-primary/60 tracking-widest mt-2 uppercase">Skor Kecocokan</span>
+                <div className="flex flex-col items-center">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-7xl md:text-9xl font-headline font-bold text-primary leading-none">{topMajor.percentage}</span>
+                    <span className="text-3xl font-bold text-primary/40">%</span>
                   </div>
-                  <div className="h-16 w-px bg-white/10" />
-                  <div className="space-y-1">
-                    <p className="text-[10px] text-white/60 font-black uppercase tracking-[0.2em]">Match Score</p>
-                    <p className="text-base text-muted-foreground font-medium">Sinkronisasi Kognitif</p>
-                  </div>
+                  <span className="text-[10px] font-black text-primary/60 tracking-widest mt-4 uppercase">Skor Kecocokan Tertinggi</span>
                 </div>
 
-                <div className="p-6 rounded-[2rem] bg-white/[0.04] border border-white/10">
-                  <p className="text-lg text-white/90 leading-relaxed font-medium">
+                <div className="p-8 rounded-[2rem] bg-white/[0.04] border border-white/10 max-w-2xl mx-auto">
+                  <p className="text-xl text-white/90 leading-relaxed font-medium">
                     "{topMajor.description}"
                   </p>
                 </div>
 
-                <div className="pt-4 flex flex-wrap gap-4 no-print">
+                <div className="pt-6 flex flex-wrap gap-4 no-print justify-center">
                   <Button 
                     size="lg" 
-                    className="h-14 bg-primary text-background font-bold text-lg hover:scale-[1.02] transition-all px-8 rounded-2xl group/btn shadow-xl"
+                    className="h-16 bg-primary text-background font-bold text-xl hover:scale-[1.02] transition-all px-10 rounded-2xl group/btn shadow-xl"
                     asChild
                   >
                     <a href="https://pmb.swadharma.ac.id" target="_blank" rel="noopener noreferrer">
                       DAFTAR SEKARANG
-                      <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                      <ArrowRight className="ml-2 w-6 h-6 group-hover/btn:translate-x-1 transition-transform" />
                     </a>
                   </Button>
                   <div className="flex gap-3">
                     <Button 
                       size="icon" 
                       variant="outline" 
-                      className="w-14 h-14 rounded-2xl border-white/10 bg-white/5 hover:border-primary/50"
+                      className="w-16 h-16 rounded-2xl border-white/10 bg-white/5 hover:border-primary/50"
                       onClick={handleDownload}
                     >
-                      <Download className="w-5 h-5" />
+                      <Download className="w-6 h-6" />
                     </Button>
                     <Button 
                       size="icon" 
                       variant="outline" 
-                      className="w-14 h-14 rounded-2xl border-white/10 bg-white/5"
+                      className="w-16 h-16 rounded-2xl border-white/10 bg-white/5"
                       onClick={() => window.print()}
                     >
-                      <Printer className="w-5 h-5" />
+                      <Printer className="w-6 h-6" />
                     </Button>
                   </div>
                 </div>
@@ -198,23 +191,23 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
             animate={{ opacity: 1, x: 0 }}
             className="md:col-span-4"
           >
-            <Card className="animate-border-rainbow overflow-hidden h-full rounded-[3rem] p-4 shadow-xl">
-              <CardContent className="p-4 flex flex-col h-full space-y-6">
-                <h3 className="text-lg font-headline font-bold">Analisis Kecocokan</h3>
+            <Card className="animate-border-rainbow overflow-hidden h-full rounded-[3rem] p-6 shadow-xl">
+              <CardContent className="p-4 flex flex-col h-full space-y-8">
+                <h3 className="text-xl font-headline font-bold text-center">Analisis Kecocokan</h3>
                 
-                <div className="flex-1 min-h-[300px]">
+                <div className="flex-1 min-h-[350px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={results} layout="vertical" margin={{ left: -20, right: 30 }}>
                       <XAxis type="number" hide />
                       <YAxis 
                         dataKey="name" 
                         type="category" 
-                        width={100}
+                        width={120}
                         axisLine={false}
                         tickLine={false}
-                        tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 10, fontWeight: 700 }}
+                        tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 11, fontWeight: 700 }}
                       />
-                      <Bar dataKey="percentage" radius={[0, 8, 8, 0]} barSize={20}>
+                      <Bar dataKey="percentage" radius={[0, 10, 10, 0]} barSize={25}>
                         {results.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
@@ -227,35 +220,13 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
           </motion.div>
         </div>
 
-        {/* Alternatives */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-6">
-            <h3 className="text-[10px] font-black tracking-[0.6em] uppercase text-primary">Alternatif Program</h3>
-            <div className="h-px flex-1 bg-white/10" />
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {results.slice(1, 5).map((major) => (
-              <div 
-                key={major.id} 
-                className="glass p-6 rounded-[2rem] border-white/5"
-              >
-                <div className="flex justify-between items-center mb-3">
-                  <span className="text-[10px] font-black px-3 py-1 rounded-full bg-white/5" style={{ color: major.color }}>{major.percentage}%</span>
-                </div>
-                <h4 className="font-headline font-bold text-base text-white">{major.name}</h4>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex justify-center pt-4 no-print">
+        <div className="flex justify-center pt-8 no-print">
           <Button 
             variant="ghost" 
-            className="text-white/40 hover:text-white hover:bg-white/5 rounded-xl h-12 px-8 transition-all" 
+            className="text-white/40 hover:text-white hover:bg-white/5 rounded-xl h-14 px-10 transition-all text-lg font-bold" 
             onClick={onRetake}
           >
-            <RefreshCcw className="w-4 h-4 mr-3" />
+            <RefreshCcw className="w-5 h-5 mr-3" />
             COBA LAGI
           </Button>
         </div>
@@ -270,6 +241,8 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
           height: '1350px',
           padding: '100px 80px',
           flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
           background: '#020617',
           color: 'white',
           position: 'fixed',
@@ -278,24 +251,24 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
           overflow: 'hidden'
         }}
       >
-        <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '900px', height: '900px', background: topMajor.color, borderRadius: '50%', filter: 'blur(220px)', opacity: 0.25 }} />
+        <div style={{ position: 'absolute', top: '-10%', left: '0', right: '0', margin: 'auto', width: '900px', height: '900px', background: topMajor.color, borderRadius: '50%', filter: 'blur(220px)', opacity: 0.25 }} />
         <div style={{ position: 'absolute', inset: 0, opacity: 0.05, backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
 
-        <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 10 }}>
+        <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 10, width: '100%' }}>
           {/* Header */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '25px' }}>
-              <img src="/logoitbs.webp" alt="Logo" style={{ width: '100px', height: '100px', objectFit: 'contain' }} />
-              <div>
-                <div style={{ fontSize: '32px', fontWeight: '900', letterSpacing: '3px', marginBottom: '4px' }}>ITB SWADHARMA</div>
-                <div style={{ fontSize: '14px', opacity: 0.5, letterSpacing: '6px' }}>NEURAL ENGINE 2026</div>
+              <img src="/logoitbs.webp" alt="Logo" style={{ width: '110px', height: '110px', objectFit: 'contain' }} />
+              <div style={{ textAlign: 'left' }}>
+                <div style={{ fontSize: '34px', fontWeight: '900', letterSpacing: '3px', marginBottom: '4px' }}>ITB SWADHARMA</div>
+                <div style={{ fontSize: '15px', opacity: 0.5, letterSpacing: '6px' }}>NEURAL ENGINE 2026</div>
               </div>
             </div>
             <div style={{ 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center', 
-              height: '54px', 
+              height: '56px', 
               fontSize: '18px', 
               fontWeight: '900', 
               color: topMajor.color, 
@@ -309,34 +282,37 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
           </div>
 
           {/* Potential Title */}
-          <div style={{ marginTop: '80px' }}>
-            <div style={{ fontSize: '28px', opacity: 0.6, marginBottom: '20px', fontWeight: '600', letterSpacing: '1px' }}>
+          <div style={{ marginTop: '60px' }}>
+            <div style={{ fontSize: '30px', opacity: 0.6, marginBottom: '20px', fontWeight: '600', letterSpacing: '2px' }}>
               POTENSI MASA DEPAN {userName.toUpperCase()}:
             </div>
-            <div style={{ fontSize: '110px', fontWeight: '900', lineHeight: '1.05', letterSpacing: '-4px', color: 'white' }}>
+            <div style={{ fontSize: '100px', fontWeight: '900', lineHeight: '1.05', letterSpacing: '-4px', color: 'white', maxWidth: '900px', margin: '0 auto' }}>
               {topMajor.name}
             </div>
           </div>
 
           {/* Main Score Area */}
-          <div style={{ display: 'flex', gap: '50px', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '60px', borderRadius: '50px', border: '1px solid rgba(255,255,255,0.08)', margin: '40px 0' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '350px' }}>
-              <div style={{ fontSize: '200px', fontWeight: '900', color: topMajor.color, lineHeight: '0.8' }}>{topMajor.percentage}%</div>
-              <div style={{ fontSize: '14px', fontWeight: '900', color: topMajor.color, letterSpacing: '2.5px', marginTop: '30px' }}>SKOR KECOCOKAN TERTINGGI</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '60px', borderRadius: '50px', border: '1px solid rgba(255,255,255,0.08)', margin: '40px 0' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
+                <div style={{ fontSize: '200px', fontWeight: '900', color: topMajor.color, lineHeight: '0.8' }}>{topMajor.percentage}</div>
+                <div style={{ fontSize: '60px', fontWeight: '900', color: topMajor.color, opacity: 0.5 }}>%</div>
+              </div>
+              <div style={{ fontSize: '16px', fontWeight: '900', color: topMajor.color, letterSpacing: '4px', marginTop: '30px' }}>SKOR KECOCOKAN TERTINGGI</div>
             </div>
             
-            <div style={{ width: '2px', height: '220px', background: 'rgba(255,255,255,0.1)' }} />
+            <div style={{ width: '100%', height: '2px', background: 'rgba(255,255,255,0.1)' }} />
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
-              <div style={{ fontSize: '20px', fontWeight: '800', color: 'white', opacity: 0.6, letterSpacing: '1px' }}>PERBANDINGAN PRODI LAIN:</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '25px', width: '100%' }}>
+              <div style={{ fontSize: '20px', fontWeight: '800', color: 'white', opacity: 0.6, letterSpacing: '2px' }}>PERBANDINGAN MINAT LAIN:</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
                 {results.slice(1, 4).map((m) => (
-                  <div key={m.id} style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <div style={{ width: '130px', fontSize: '15px', fontWeight: '700', color: 'white' }}>{m.name}</div>
-                    <div style={{ flex: 1, height: '10px', background: 'rgba(255,255,255,0.05)', borderRadius: '5px', overflow: 'hidden' }}>
+                  <div key={m.id} style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
+                    <div style={{ width: '220px', fontSize: '18px', fontWeight: '700', color: 'white', textAlign: 'left' }}>{m.name}</div>
+                    <div style={{ flex: 1, height: '12px', background: 'rgba(255,255,255,0.05)', borderRadius: '6px', overflow: 'hidden' }}>
                       <div style={{ width: `${m.percentage}%`, height: '100%', background: m.color }} />
                     </div>
-                    <div style={{ width: '50px', fontSize: '15px', fontWeight: '900', color: m.color, textAlign: 'right' }}>{m.percentage}%</div>
+                    <div style={{ width: '80px', fontSize: '18px', fontWeight: '900', color: m.color, textAlign: 'right' }}>{m.percentage}%</div>
                   </div>
                 ))}
               </div>
@@ -345,33 +321,33 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
 
           {/* Description Box */}
           <div style={{ padding: '50px', background: `${topMajor.color}15`, borderRadius: '45px', border: `1px solid ${topMajor.color}33` }}>
-            <div style={{ fontSize: '30px', lineHeight: '1.5', textAlign: 'center', fontStyle: 'italic', fontWeight: '500', color: 'white' }}>
+            <div style={{ fontSize: '32px', lineHeight: '1.5', textAlign: 'center', fontStyle: 'italic', fontWeight: '500', color: 'white' }}>
               "{topMajor.description}"
             </div>
           </div>
 
           {/* Footer Area */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', paddingTop: '60px', borderTop: '2px solid rgba(255,255,255,0.08)' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-              <div style={{ fontSize: '16px', opacity: 0.5, fontWeight: '700', letterSpacing: '1.5px' }}>SIAP MELANGKAH?</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'flex-start' }}>
+              <div style={{ fontSize: '18px', opacity: 0.5, fontWeight: '700', letterSpacing: '2px' }}>SIAP MELANGKAH?</div>
               <div style={{ 
                 background: 'white', 
                 color: '#020617', 
-                padding: '18px 45px', 
-                borderRadius: '18px', 
-                fontSize: '30px', 
+                padding: '22px 50px', 
+                borderRadius: '20px', 
+                fontSize: '32px', 
                 fontWeight: '900', 
                 display: 'flex', 
                 alignItems: 'center', 
                 gap: '15px',
-                boxShadow: `0 15px 40px ${topMajor.color}33`
+                boxShadow: `0 20px 50px ${topMajor.color}44`
               }}>
-                DAFTAR SEKARANG <ArrowRight size={32} />
+                DAFTAR SEKARANG <ArrowRight size={36} />
               </div>
             </div>
             <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: '24px', fontWeight: '900', color: topMajor.color, marginBottom: '6px' }}>pmb.swadharma.ac.id</div>
-              <div style={{ fontSize: '15px', opacity: 0.4, fontWeight: '600' }}>© ITB SWADHARMA 2026</div>
+              <div style={{ fontSize: '28px', fontWeight: '900', color: topMajor.color, marginBottom: '6px' }}>pmb.swadharma.ac.id</div>
+              <div style={{ fontSize: '16px', opacity: 0.4, fontWeight: '600' }}>© ITB SWADHARMA 2026</div>
             </div>
           </div>
         </div>

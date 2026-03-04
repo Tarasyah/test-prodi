@@ -6,7 +6,7 @@ import { MajorId } from '@/lib/major-matcher';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell } from 'recharts';
-import { Download, GraduationCap, ArrowRight, Printer, RefreshCcw, Sparkles, Zap, Heart, Star } from 'lucide-react';
+import { Download, GraduationCap, ArrowRight, Printer, RefreshCcw, Sparkles, Zap, Star } from 'lucide-react';
 import html2canvas from 'html2canvas';
 
 interface ResultItem {
@@ -51,133 +51,92 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
     }
   };
 
-  const floatingElements = [
-    { icon: <Zap className="w-10 h-10" />, x: "8%", y: "15%", delay: 0 },
-    { icon: <Star className="w-6 h-6" />, x: "88%", y: "12%", delay: 1.5 },
-    { icon: <Heart className="w-5 h-5" />, x: "82%", y: "85%", delay: 3 },
-    { icon: <Sparkles className="w-8 h-8" />, x: "12%", y: "78%", delay: 0.8 },
-  ];
-
   return (
-    <div className="relative min-h-screen bg-mesh-vibrant overflow-hidden">
-      {/* Floating Elements */}
-      {floatingElements.map((el, i) => (
-        <motion.div
-          key={i}
-          animate={{ 
-            opacity: [0.1, 0.2, 0.1],
-            y: [0, -20, 0],
-            rotate: [0, 10, -10, 0]
-          }}
-          transition={{ 
-            duration: 10 + i, 
-            repeat: Infinity, 
-            delay: el.delay,
-            ease: "easeInOut" 
-          }}
-          className="absolute z-0 text-primary/20 pointer-events-none will-change-transform"
-          style={{ left: el.x, top: el.y }}
-        >
-          {el.icon}
-        </motion.div>
-      ))}
-
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 md:py-12 space-y-8">
-        {/* Logo Header */}
+    <div className="relative min-h-screen bg-mesh-vibrant overflow-hidden flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-6 space-y-6">
+        {/* Header Logo */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col items-center gap-4 text-center"
+          className="flex flex-col items-center gap-2 text-center"
         >
-          <img src="/logoitbs.webp" alt="Logo ITB Swadharma" className="w-20 h-20 object-contain" />
-          <div className="space-y-1">
-            <h3 className="text-sm font-black tracking-[0.4em] uppercase text-white">ITB Swadharma</h3>
-            <p className="text-[10px] font-medium tracking-[0.2em] text-primary/60 uppercase">Neural Engine 2026</p>
+          <img src="/logoitbs.webp" alt="Logo ITB Swadharma" className="w-16 h-16 object-contain" />
+          <div className="space-y-0.5">
+            <h3 className="text-[12px] font-black tracking-[0.4em] uppercase text-white">ITB Swadharma</h3>
+            <p className="text-[9px] font-medium tracking-[0.2em] text-primary/60 uppercase">Neural Engine 2026</p>
           </div>
         </motion.div>
 
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-4"
+          className="text-center space-y-2"
         >
-          <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-[10px] font-black uppercase tracking-[0.3em]">
-            <Sparkles className="w-4 h-4" />
-            Analysis Complete
-          </div>
-          <h1 className="text-3xl md:text-5xl font-headline font-bold tracking-tighter leading-tight text-white max-w-4xl mx-auto text-center">
+          <h1 className="text-2xl md:text-4xl font-headline font-bold tracking-tighter leading-tight text-white max-w-4xl mx-auto">
             Hi {userName}, Masa <span className="text-primary italic">Depanmu</span> Di:
           </h1>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
           {/* Main Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             className="md:col-span-8"
           >
-            <div className="relative overflow-hidden rounded-[3rem] p-8 md:p-10 animate-border-rainbow h-full flex flex-col group shadow-2xl items-center text-center">
+            <div className="relative overflow-hidden rounded-[2.5rem] p-6 md:p-8 animate-border-rainbow h-full flex flex-col group shadow-2xl items-center text-center">
               <div 
-                className="absolute -top-40 -right-40 w-[600px] h-[600px] blur-[150px] rounded-full opacity-20"
+                className="absolute -top-40 -right-40 w-[500px] h-[500px] blur-[120px] rounded-full opacity-20"
                 style={{ backgroundColor: topMajor.color }}
               />
               
-              <div className="relative z-10 flex-1 space-y-8 w-full">
-                <div className="flex flex-col items-center space-y-4">
-                  <div 
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl mb-2"
-                    style={{ backgroundColor: topMajor.color }}
-                  >
-                    <GraduationCap className="w-10 h-10 text-background" />
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-[10px] font-black tracking-[0.4em] text-primary uppercase">Rekomendasi Utama</p>
-                    <h2 className="text-4xl md:text-6xl font-headline font-bold text-white tracking-tighter">{topMajor.name}</h2>
-                  </div>
+              <div className="relative z-10 flex-1 space-y-6 w-full flex flex-col items-center justify-center">
+                <div className="space-y-3">
+                  <p className="text-[9px] font-black tracking-[0.4em] text-primary uppercase">Rekomendasi Utama</p>
+                  <h2 className="text-3xl md:text-5xl font-headline font-bold text-white tracking-tighter leading-tight">{topMajor.name}</h2>
                 </div>
 
                 <div className="flex flex-col items-center">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-7xl md:text-9xl font-headline font-bold text-primary leading-none">{topMajor.percentage}</span>
-                    <span className="text-3xl font-bold text-primary/40">%</span>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-6xl md:text-8xl font-headline font-bold text-primary leading-none">{topMajor.percentage}</span>
+                    <span className="text-2xl font-bold text-primary/40">%</span>
                   </div>
-                  <span className="text-[10px] font-black text-primary/60 tracking-widest mt-4 uppercase">Skor Kecocokan Tertinggi</span>
+                  <span className="text-[9px] font-black text-primary/60 tracking-widest mt-2 uppercase">Skor Kecocokan Tertinggi</span>
                 </div>
 
-                <div className="p-8 rounded-[2rem] bg-white/[0.04] border border-white/10 max-w-2xl mx-auto">
-                  <p className="text-xl text-white/90 leading-relaxed font-medium">
+                <div className="p-6 rounded-[1.5rem] bg-white/[0.04] border border-white/10 max-w-xl">
+                  <p className="text-lg text-white/90 leading-relaxed font-medium italic">
                     "{topMajor.description}"
                   </p>
                 </div>
 
-                <div className="pt-6 flex flex-wrap gap-4 no-print justify-center">
+                <div className="pt-4 flex flex-wrap gap-3 no-print justify-center">
                   <Button 
                     size="lg" 
-                    className="h-16 bg-primary text-background font-bold text-xl hover:scale-[1.02] transition-all px-10 rounded-2xl group/btn shadow-xl"
+                    className="h-14 bg-primary text-background font-bold text-lg hover:scale-[1.02] transition-all px-8 rounded-xl group/btn shadow-xl"
                     asChild
                   >
                     <a href="https://pmb.swadharma.ac.id" target="_blank" rel="noopener noreferrer">
                       DAFTAR SEKARANG
-                      <ArrowRight className="ml-2 w-6 h-6 group-hover/btn:translate-x-1 transition-transform" />
+                      <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
                     </a>
                   </Button>
-                  <div className="flex gap-3">
+                  <div className="flex gap-2">
                     <Button 
                       size="icon" 
                       variant="outline" 
-                      className="w-16 h-16 rounded-2xl border-white/10 bg-white/5 hover:border-primary/50"
+                      className="w-14 h-14 rounded-xl border-white/10 bg-white/5 hover:border-primary/50"
                       onClick={handleDownload}
                     >
-                      <Download className="w-6 h-6" />
+                      <Download className="w-5 h-5" />
                     </Button>
                     <Button 
                       size="icon" 
                       variant="outline" 
-                      className="w-16 h-16 rounded-2xl border-white/10 bg-white/5"
+                      className="w-14 h-14 rounded-xl border-white/10 bg-white/5"
                       onClick={() => window.print()}
                     >
-                      <Printer className="w-6 h-6" />
+                      <Printer className="w-5 h-5" />
                     </Button>
                   </div>
                 </div>
@@ -191,13 +150,13 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
             animate={{ opacity: 1, x: 0 }}
             className="md:col-span-4"
           >
-            <Card className="animate-border-rainbow overflow-hidden h-full rounded-[3rem] p-6 shadow-xl">
-              <CardContent className="p-4 flex flex-col h-full space-y-8">
-                <h3 className="text-xl font-headline font-bold text-center">Analisis Kecocokan</h3>
+            <Card className="animate-border-rainbow overflow-hidden h-full rounded-[2.5rem] p-6 shadow-xl border-none bg-black/40 backdrop-blur-sm">
+              <CardContent className="p-0 flex flex-col h-full space-y-6">
+                <h3 className="text-lg font-headline font-bold text-center">Analisis Kecocokan</h3>
                 
-                <div className="flex-1 min-h-[350px]">
+                <div className="flex-1 min-h-[300px]">
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={results} layout="vertical" margin={{ left: -20, right: 30 }}>
+                    <BarChart data={results} layout="vertical" margin={{ left: -30, right: 30 }}>
                       <XAxis type="number" hide />
                       <YAxis 
                         dataKey="name" 
@@ -205,9 +164,9 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
                         width={120}
                         axisLine={false}
                         tickLine={false}
-                        tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 11, fontWeight: 700 }}
+                        tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 10, fontWeight: 700 }}
                       />
-                      <Bar dataKey="percentage" radius={[0, 10, 10, 0]} barSize={25}>
+                      <Bar dataKey="percentage" radius={[0, 8, 8, 0]} barSize={20}>
                         {results.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
@@ -215,31 +174,30 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
+                <div className="text-center">
+                  <Button 
+                    variant="ghost" 
+                    className="text-white/40 hover:text-white hover:bg-white/5 rounded-xl h-12 px-6 transition-all text-sm font-bold" 
+                    onClick={onRetake}
+                  >
+                    <RefreshCcw className="w-4 h-4 mr-2" />
+                    COBA LAGI
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </motion.div>
         </div>
-
-        <div className="flex justify-center pt-8 no-print">
-          <Button 
-            variant="ghost" 
-            className="text-white/40 hover:text-white hover:bg-white/5 rounded-xl h-14 px-10 transition-all text-lg font-bold" 
-            onClick={onRetake}
-          >
-            <RefreshCcw className="w-5 h-5 mr-3" />
-            COBA LAGI
-          </Button>
-        </div>
       </div>
 
-      {/* PREMIUM 4:5 Template for Download */}
+      {/* PREMIUM 4:5 Template for Download - Optimized Layout */}
       <div 
         ref={shareCardRef}
         style={{ 
           display: 'none', 
           width: '1080px', 
           height: '1350px',
-          padding: '100px 80px',
+          padding: '80px 70px',
           flexDirection: 'column',
           alignItems: 'center',
           textAlign: 'center',
@@ -251,103 +209,111 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
           overflow: 'hidden'
         }}
       >
-        <div style={{ position: 'absolute', top: '-10%', left: '0', right: '0', margin: 'auto', width: '900px', height: '900px', background: topMajor.color, borderRadius: '50%', filter: 'blur(220px)', opacity: 0.25 }} />
-        <div style={{ position: 'absolute', inset: 0, opacity: 0.05, backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+        <div style={{ position: 'absolute', top: '-15%', left: '0', right: '0', margin: 'auto', width: '1000px', height: '1000px', background: topMajor.color, borderRadius: '50%', filter: 'blur(250px)', opacity: 0.2 }} />
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.03, backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
         <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 10, width: '100%' }}>
-          {/* Header */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '25px' }}>
-              <img src="/logoitbs.webp" alt="Logo" style={{ width: '110px', height: '110px', objectFit: 'contain' }} />
+          {/* Header Branding */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <img src="/logoitbs.webp" alt="Logo" style={{ width: '90px', height: '90px', objectFit: 'contain' }} />
               <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: '34px', fontWeight: '900', letterSpacing: '3px', marginBottom: '4px' }}>ITB SWADHARMA</div>
-                <div style={{ fontSize: '15px', opacity: 0.5, letterSpacing: '6px' }}>NEURAL ENGINE 2026</div>
+                <div style={{ fontSize: '28px', fontWeight: '900', letterSpacing: '3px', marginBottom: '2px' }}>ITB SWADHARMA</div>
+                <div style={{ fontSize: '13px', opacity: 0.5, letterSpacing: '5px' }}>NEURAL ENGINE 2026</div>
               </div>
             </div>
             <div style={{ 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center', 
-              height: '56px', 
-              fontSize: '18px', 
+              height: '50px', 
+              fontSize: '15px', 
               fontWeight: '900', 
               color: topMajor.color, 
-              border: `2.5px solid ${topMajor.color}`, 
-              padding: '0 35px', 
-              borderRadius: '18px',
+              border: `2px solid ${topMajor.color}`, 
+              padding: '0 30px', 
+              borderRadius: '15px',
               backgroundColor: `${topMajor.color}11`
             }}>
               OFFICIAL RESULT
             </div>
           </div>
 
-          {/* Potential Title */}
-          <div style={{ marginTop: '60px' }}>
-            <div style={{ fontSize: '30px', opacity: 0.6, marginBottom: '20px', fontWeight: '600', letterSpacing: '2px' }}>
-              POTENSI MASA DEPAN {userName.toUpperCase()}:
+          {/* Persona & Result Headline */}
+          <div style={{ marginTop: '40px' }}>
+            <div style={{ fontSize: '26px', opacity: 0.6, marginBottom: '15px', fontWeight: '600', letterSpacing: '2px', textTransform: 'uppercase' }}>
+              POTENSI MASA DEPAN {userName}:
             </div>
-            <div style={{ fontSize: '100px', fontWeight: '900', lineHeight: '1.05', letterSpacing: '-4px', color: 'white', maxWidth: '900px', margin: '0 auto' }}>
+            <div style={{ fontSize: '86px', fontWeight: '900', lineHeight: '1.1', letterSpacing: '-3px', color: 'white' }}>
               {topMajor.name}
             </div>
           </div>
 
-          {/* Main Score Area */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '60px', borderRadius: '50px', border: '1px solid rgba(255,255,255,0.08)', margin: '40px 0' }}>
+          {/* Main Visual: Score & Comparison */}
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: '30px', 
+            alignItems: 'center', 
+            background: 'rgba(255,255,255,0.03)', 
+            padding: '50px', 
+            borderRadius: '40px', 
+            border: '1px solid rgba(255,255,255,0.08)',
+            margin: '30px 0' 
+          }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
-                <div style={{ fontSize: '200px', fontWeight: '900', color: topMajor.color, lineHeight: '0.8' }}>{topMajor.percentage}</div>
-                <div style={{ fontSize: '60px', fontWeight: '900', color: topMajor.color, opacity: 0.5 }}>%</div>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                <div style={{ fontSize: '180px', fontWeight: '900', color: topMajor.color, lineHeight: '0.8' }}>{topMajor.percentage}</div>
+                <div style={{ fontSize: '50px', fontWeight: '900', color: topMajor.color, opacity: 0.5 }}>%</div>
               </div>
-              <div style={{ fontSize: '16px', fontWeight: '900', color: topMajor.color, letterSpacing: '4px', marginTop: '30px' }}>SKOR KECOCOKAN TERTINGGI</div>
+              <div style={{ fontSize: '14px', fontWeight: '900', color: topMajor.color, letterSpacing: '4px', marginTop: '20px' }}>SKOR KECOCOKAN TERTINGGI</div>
             </div>
             
-            <div style={{ width: '100%', height: '2px', background: 'rgba(255,255,255,0.1)' }} />
+            <div style={{ width: '100%', height: '1px', background: 'rgba(255,255,255,0.1)' }} />
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '25px', width: '100%' }}>
-              <div style={{ fontSize: '20px', fontWeight: '800', color: 'white', opacity: 0.6, letterSpacing: '2px' }}>PERBANDINGAN MINAT LAIN:</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+            {/* Comparison Mini Charts */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%' }}>
+              <div style={{ fontSize: '16px', fontWeight: '800', color: 'white', opacity: 0.4, letterSpacing: '2px', textAlign: 'center' }}>PERBANDINGAN MINAT LAIN:</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 {results.slice(1, 4).map((m) => (
-                  <div key={m.id} style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
-                    <div style={{ width: '220px', fontSize: '18px', fontWeight: '700', color: 'white', textAlign: 'left' }}>{m.name}</div>
-                    <div style={{ flex: 1, height: '12px', background: 'rgba(255,255,255,0.05)', borderRadius: '6px', overflow: 'hidden' }}>
+                  <div key={m.id} style={{ display: 'flex', alignItems: 'center', gap: '25px' }}>
+                    <div style={{ width: '200px', fontSize: '16px', fontWeight: '700', color: 'white', textAlign: 'left', opacity: 0.8 }}>{m.name}</div>
+                    <div style={{ flex: 1, height: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', overflow: 'hidden' }}>
                       <div style={{ width: `${m.percentage}%`, height: '100%', background: m.color }} />
                     </div>
-                    <div style={{ width: '80px', fontSize: '18px', fontWeight: '900', color: m.color, textAlign: 'right' }}>{m.percentage}%</div>
+                    <div style={{ width: '70px', fontSize: '16px', fontWeight: '900', color: m.color, textAlign: 'right' }}>{m.percentage}%</div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Description Box */}
-          <div style={{ padding: '50px', background: `${topMajor.color}15`, borderRadius: '45px', border: `1px solid ${topMajor.color}33` }}>
-            <div style={{ fontSize: '32px', lineHeight: '1.5', textAlign: 'center', fontStyle: 'italic', fontWeight: '500', color: 'white' }}>
+          {/* Description Block */}
+          <div style={{ padding: '40px', background: `${topMajor.color}15`, borderRadius: '35px', border: `1px solid ${topMajor.color}22` }}>
+            <div style={{ fontSize: '28px', lineHeight: '1.4', textAlign: 'center', fontStyle: 'italic', fontWeight: '500', color: 'white' }}>
               "{topMajor.description}"
             </div>
           </div>
 
-          {/* Footer Area */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', paddingTop: '60px', borderTop: '2px solid rgba(255,255,255,0.08)' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'flex-start' }}>
-              <div style={{ fontSize: '18px', opacity: 0.5, fontWeight: '700', letterSpacing: '2px' }}>SIAP MELANGKAH?</div>
-              <div style={{ 
-                background: 'white', 
-                color: '#020617', 
-                padding: '22px 50px', 
-                borderRadius: '20px', 
-                fontSize: '32px', 
-                fontWeight: '900', 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '15px',
-                boxShadow: `0 20px 50px ${topMajor.color}44`
-              }}>
-                DAFTAR SEKARANG <ArrowRight size={36} />
-              </div>
+          {/* Footer CTA */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', paddingTop: '40px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            <div style={{ 
+              background: 'white', 
+              color: '#020617', 
+              padding: '18px 45px', 
+              borderRadius: '16px', 
+              fontSize: '24px', 
+              fontWeight: '900', 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '12px',
+              boxShadow: `0 15px 40px ${topMajor.color}33`
+            }}>
+              DAFTAR SEKARANG
             </div>
             <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: '28px', fontWeight: '900', color: topMajor.color, marginBottom: '6px' }}>pmb.swadharma.ac.id</div>
-              <div style={{ fontSize: '16px', opacity: 0.4, fontWeight: '600' }}>© ITB SWADHARMA 2026</div>
+              <div style={{ fontSize: '24px', fontWeight: '900', color: topMajor.color, marginBottom: '4px' }}>pmb.swadharma.ac.id</div>
+              <div style={{ fontSize: '14px', opacity: 0.4, fontWeight: '600' }}>© ITB SWADHARMA 2026</div>
             </div>
           </div>
         </div>

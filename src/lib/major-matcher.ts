@@ -68,7 +68,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 2,
-    text: "Saat main game *board game* (monopoli/werewolf) atau *video game* baru, kamu biasanya...",
+    text: "Saat main game 'board game' (monopoli/werewolf) atau 'video game' baru, kamu biasanya...",
     options: [
       { text: "Baca buku panduan atau tutorialnya sampai paham betul sebelum main.", weights: { ak: 4, ti: 4 } },
       { text: "Langsung main aja, nanti juga paham triknya sambil jalan.", weights: { bd: 5, si: 2 } },
@@ -88,11 +88,11 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 4,
-    text: "Apa hal yang paling bikin kamu cepat *bad mood*?",
+    text: "Apa hal yang paling bikin kamu cepat 'bad mood'?",
     options: [
       { text: "Kerja dua kali gara-gara sistem atau aturannya nggak jelas.", weights: { si: 5, ti: 3 } },
       { text: "Orang yang ngambil keputusan cuma pakai insting tanpa bukti.", weights: { sd: 5, ak: 3 } },
-      { text: "Hitungan yang nggak *balance* atau ada detail kecil yang kelewat.", weights: { ak: 5 } },
+      { text: "Hitungan yang nggak 'balance' atau ada detail kecil yang kelewat.", weights: { ak: 5 } },
       { text: "Birokrasi yang kaku dan nggak ngasih ruang buat kreativitas.", weights: { bd: 5, si: 2 } }
     ]
   },
@@ -100,8 +100,8 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     id: 5,
     text: "Saat mau beli barang mahal (misal: HP atau laptop), proses berpikirmu adalah...",
     options: [
-      { text: "Bandingin spesifikasi detailnya, nonton 10 video *review* berbeda.", weights: { ti: 5, sd: 3 } },
-      { text: "Cari tahu promo, *cashback*, atau nilai jual kembalinya nanti.", weights: { bd: 5, ak: 3 } },
+      { text: "Bandingin spesifikasi detailnya, nonton 10 video 'review' berbeda.", weights: { ti: 5, sd: 3 } },
+      { text: "Cari tahu promo, 'cashback', atau nilai jual kembalinya nanti.", weights: { bd: 5, ak: 3 } },
       { text: "Bikin tabel perbandingan plus-minus di otak (atau di catatan).", weights: { ak: 5, sd: 2 } },
       { text: "Milih yang ekosistemnya paling nyambung sama gadgetku yang lain.", weights: { si: 5 } }
     ]
@@ -122,7 +122,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     options: [
       { text: "Ngasih fakta, angka, atau bukti kuat yang nggak bisa dibantah.", weights: { sd: 5, ak: 2 } },
       { text: "Nyari celah logika dari omongan dia yang nggak masuk akal.", weights: { ti: 5 } },
-      { text: "Mencari jalan tengah biar kedua pihak sama-sama untung (*win-win*).", weights: { si: 5, bd: 2 } },
+      { text: "Mencari jalan tengah biar kedua pihak sama-sama untung ('win-win').", weights: { si: 5, bd: 2 } },
       { text: "Pakai pesona, rayuan, dan pendekatan emosional biar dia luluh.", weights: { bd: 5 } }
     ]
   },
@@ -131,16 +131,16 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     text: "Saat menghadapi masalah atau jalan buntu, kamu biasanya...",
     options: [
       { text: "Mundur sebentar, menyendiri, lalu membongkar masalahnya dari nol.", weights: { ti: 5 } },
-      { text: "Nanya pendapat orang lain atau cari referensi *case* yang mirip.", weights: { si: 5, bd: 2 } },
+      { text: "Nanya pendapat orang lain atau cari referensi 'case' yang mirip.", weights: { si: 5, bd: 2 } },
       { text: "Mengecek ulang semua langkah sebelumnya, pasti ada pola yang terlewat.", weights: { sd: 5, ak: 2 } },
-      { text: "Fokus ke rencana cadangan (*Plan B*) dan meminimalisir kerugian.", weights: { ak: 5, bd: 2 } }
+      { text: "Fokus ke rencana cadangan ('Plan B') dan meminimalisir kerugian.", weights: { ak: 5, bd: 2 } }
     ]
   },
   {
     id: 9,
     text: "Genre tontonan (film/series) favoritmu biasanya yang seperti apa?",
     options: [
-      { text: "Misteri / Detektif yang bikin mikir keras nebak *plot twist*.", weights: { sd: 5, ti: 2 } },
+      { text: "Misteri / Detektif yang bikin mikir keras nebak 'plot twist'.", weights: { sd: 5, ti: 2 } },
       { text: "Sci-Fi / Masa depan dengan teknologi-teknologi yang mindblowing.", weights: { ti: 5, si: 2 } },
       { text: "Kisah nyata tentang membangun kerajaan bisnis atau intrik perusahaan.", weights: { bd: 5, mn: 2 } }, // mn is replaced by sd in previous code, but mapped here for logic
       { text: "Dokumenter sejarah, biografi, atau sesuatu yang terstruktur rapi.", weights: { ak: 5 } }
@@ -148,10 +148,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 10,
-    text: "Kalau kamu dikasih *budget* tak terbatas untuk liburan, kamu bakal...",
+    text: "Kalau kamu dikasih 'budget' tak terbatas untuk liburan, kamu bakal...",
     options: [
       { text: "Bikin rute perjalanan yang super efisien biar semua tempat wisata kekunjungi.", weights: { si: 5, ti: 2 } },
-      { text: "Nyobain pengalaman-pengalaman baru yang eksklusif dan *trendsetter* banget.", weights: { bd: 5 } },
+      { text: "Nyobain pengalaman-pengalaman baru yang eksklusif dan 'trendsetter' banget.", weights: { bd: 5 } },
       { text: "Tetap mencatat pengeluaran harian dan cari penawaran nilai terbaik.", weights: { ak: 5 } },
       { text: "Eksplorasi tempat tersembunyi yang jarang didatangi turis biasa.", weights: { sd: 5 } }
     ]

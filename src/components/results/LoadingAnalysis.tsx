@@ -10,7 +10,6 @@ export const LoadingAnalysis: React.FC = () => {
   const steps = [
     { text: "Mengumpulkan data respons...", icon: <Database className="w-6 h-6" /> },
     { text: "Menganalisis profil psikometrik...", icon: <Search className="w-6 h-6" /> },
-    { text: "Menghitung bobot program studi...", icon: <Cpu className="w-6 h-6" /> },
     { text: "Menyiapkan rekomendasi personal...", icon: <BarChart3 className="w-6 h-6" /> }
   ];
 

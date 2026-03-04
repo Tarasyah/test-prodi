@@ -32,7 +32,7 @@ export default function Home() {
     // Snappy analysis delay
     setTimeout(() => {
       setAppState('results');
-    }, 1500);
+    }, 0);
   };
 
   const handleRetake = () => {

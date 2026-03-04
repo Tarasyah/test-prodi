@@ -52,96 +52,95 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
   };
 
   return (
-    <div className="relative min-h-screen bg-mesh-vibrant flex flex-col items-center justify-center py-8 overflow-y-auto overflow-x-hidden">
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 space-y-6">
+    <div className="relative min-h-screen bg-mesh-vibrant flex flex-col items-center justify-center py-4 overflow-y-auto overflow-x-hidden">
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 space-y-4">
         {/* Header Logo */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col items-center gap-2 text-center"
+          className="flex flex-col items-center gap-1.5 text-center"
         >
           <img 
             src="/logoitbs.webp" 
             alt="Logo ITB Swadharma" 
-            className="w-16 h-16 object-contain" 
-            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            className="w-14 h-14 object-contain" 
           />
           <div className="space-y-0.5">
-            <h3 className="text-[11px] font-black tracking-[0.4em] uppercase text-white">ITB Swadharma</h3>
-            <p className="text-[8px] font-medium tracking-[0.2em] text-primary/60 uppercase">Neural Engine 2026</p>
+            <h3 className="text-[10px] font-black tracking-[0.4em] uppercase text-white">ITB Swadharma</h3>
+            <p className="text-[7px] font-medium tracking-[0.2em] text-primary/60 uppercase">Neural Engine 2026</p>
           </div>
         </motion.div>
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-2"
+          className="text-center space-y-1"
         >
-          <h1 className="text-2xl md:text-3xl font-headline font-bold tracking-tighter leading-tight text-white max-w-2xl mx-auto">
+          <h1 className="text-xl md:text-2xl font-headline font-bold tracking-tighter leading-tight text-white max-w-xl mx-auto">
             Hi {userName}, Masa <span className="text-primary italic">Depanmu</span> Di:
           </h1>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
           {/* Main Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="md:col-span-8"
+            className="md:col-span-7"
           >
-            <div className="relative overflow-hidden rounded-[2rem] p-6 md:p-8 animate-border-rainbow h-full flex flex-col group shadow-2xl items-center text-center">
+            <div className="relative overflow-hidden rounded-[1.5rem] p-6 animate-border-rainbow h-full flex flex-col group shadow-2xl items-center text-center">
               <div 
-                className="absolute -top-40 -right-40 w-[500px] h-[500px] blur-[120px] rounded-full opacity-10"
+                className="absolute -top-40 -right-40 w-[400px] h-[400px] blur-[100px] rounded-full opacity-10"
                 style={{ backgroundColor: topMajor.color }}
               />
               
-              <div className="relative z-10 flex-1 space-y-6 w-full flex flex-col items-center justify-center">
-                <div className="space-y-2">
-                  <p className="text-[8px] font-black tracking-[0.4em] text-primary uppercase">Rekomendasi Utama</p>
-                  <h2 className="text-3xl md:text-4xl font-headline font-bold text-white tracking-tighter leading-tight">{topMajor.name}</h2>
+              <div className="relative z-10 flex-1 space-y-4 w-full flex flex-col items-center justify-center">
+                <div className="space-y-1">
+                  <p className="text-[7px] font-black tracking-[0.4em] text-primary uppercase">Rekomendasi Utama</p>
+                  <h2 className="text-2xl md:text-3xl font-headline font-bold text-white tracking-tighter leading-tight">{topMajor.name}</h2>
                 </div>
 
                 <div className="flex flex-col items-center">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-6xl md:text-7xl font-headline font-bold text-primary leading-none">{topMajor.percentage}</span>
-                    <span className="text-xl font-bold text-primary/40">%</span>
+                    <span className="text-5xl md:text-6xl font-headline font-bold text-primary leading-none">{topMajor.percentage}</span>
+                    <span className="text-lg font-bold text-primary/40">%</span>
                   </div>
-                  <span className="text-[8px] font-black text-primary/60 tracking-widest mt-1 uppercase">Skor Kecocokan Tertinggi</span>
+                  <span className="text-[7px] font-black text-primary/60 tracking-widest mt-0.5 uppercase">Skor Kecocokan Tertinggi</span>
                 </div>
 
-                <div className="p-5 rounded-[1.25rem] bg-white/[0.04] border border-white/10 max-w-lg">
-                  <p className="text-base text-white/90 leading-relaxed font-medium italic">
+                <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10 max-w-sm">
+                  <p className="text-xs text-white/90 leading-relaxed font-medium italic">
                     "{topMajor.description}"
                   </p>
                 </div>
 
-                <div className="pt-4 flex flex-wrap gap-3 no-print justify-center">
+                <div className="pt-2 flex flex-wrap gap-2 no-print justify-center">
                   <Button 
-                    size="lg" 
-                    className="h-12 bg-primary text-background font-bold text-base hover:scale-[1.02] transition-all px-6 rounded-xl group/btn shadow-xl"
+                    size="sm" 
+                    className="h-10 bg-primary text-background font-bold text-sm hover:scale-[1.02] transition-all px-5 rounded-lg group/btn shadow-xl"
                     asChild
                   >
                     <a href="https://pmb.swadharma.ac.id" target="_blank" rel="noopener noreferrer">
                       DAFTAR SEKARANG
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      <ArrowRight className="ml-2 w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
                     </a>
                   </Button>
                   <div className="flex gap-2">
                     <Button 
                       size="icon" 
                       variant="outline" 
-                      className="w-12 h-12 rounded-xl border-white/10 bg-white/5 hover:border-primary/50"
+                      className="w-10 h-10 rounded-lg border-white/10 bg-white/5 hover:border-primary/50"
                       onClick={handleDownload}
                     >
-                      <Download className="w-5 h-5" />
+                      <Download className="w-4 h-4" />
                     </Button>
                     <Button 
                       size="icon" 
                       variant="outline" 
-                      className="w-12 h-12 rounded-xl border-white/10 bg-white/5"
+                      className="w-10 h-10 rounded-lg border-white/10 bg-white/5"
                       onClick={() => window.print()}
                     >
-                      <Printer className="w-5 h-5" />
+                      <Printer className="w-4 h-4" />
                     </Button>
                   </div>
                 </div>
@@ -153,25 +152,25 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="md:col-span-4"
+            className="md:col-span-5"
           >
-            <Card className="animate-border-rainbow overflow-hidden h-full rounded-[2rem] p-6 shadow-xl border-none bg-black/40 backdrop-blur-sm">
-              <CardContent className="p-0 flex flex-col h-full space-y-4">
-                <h3 className="text-base font-headline font-bold text-center">Analisis Kecocokan</h3>
+            <Card className="animate-border-rainbow overflow-hidden h-full rounded-[1.5rem] p-5 shadow-xl border-none bg-black/40 backdrop-blur-sm">
+              <CardContent className="p-0 flex flex-col h-full space-y-3">
+                <h3 className="text-sm font-headline font-bold text-center">Analisis Kecocokan</h3>
                 
-                <div className="flex-1 min-h-[250px]">
+                <div className="flex-1 min-h-[180px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={results} layout="vertical" margin={{ left: -30, right: 30 }}>
                       <XAxis type="number" hide />
                       <YAxis 
                         dataKey="name" 
                         type="category" 
-                        width={100}
+                        width={90}
                         axisLine={false}
                         tickLine={false}
-                        tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 9, fontWeight: 700 }}
+                        tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 8, fontWeight: 700 }}
                       />
-                      <Bar dataKey="percentage" radius={[0, 6, 6, 0]} barSize={16}>
+                      <Bar dataKey="percentage" radius={[0, 4, 4, 0]} barSize={12}>
                         {results.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
@@ -182,10 +181,10 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
                 <div className="text-center">
                   <Button 
                     variant="ghost" 
-                    className="text-white/40 hover:text-white hover:bg-white/5 rounded-xl h-10 px-4 transition-all text-[10px] font-bold" 
+                    className="text-white/40 hover:text-white hover:bg-white/5 rounded-lg h-8 px-3 transition-all text-[9px] font-bold" 
                     onClick={onRetake}
                   >
-                    <RefreshCcw className="w-3.5 h-3.5 mr-2" />
+                    <RefreshCcw className="w-3 h-3 mr-2" />
                     COBA LAGI
                   </Button>
                 </div>

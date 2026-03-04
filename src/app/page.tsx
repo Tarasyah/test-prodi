@@ -29,10 +29,10 @@ export default function Home() {
     const calculated = calculateResults(answers);
     setResults(calculated);
     
-    // Simulate analysis delay
+    // Snappy analysis delay
     setTimeout(() => {
       setAppState('results');
-    }, 3500);
+    }, 1500);
   };
 
   const handleRetake = () => {

@@ -6,7 +6,7 @@ import { MajorId } from '@/lib/major-matcher';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell } from 'recharts';
-import { Download, GraduationCap, ArrowRight, Printer, RefreshCcw, Sparkles, Globe, Zap, Heart, Star, LayoutGrid } from 'lucide-react';
+import { Download, GraduationCap, ArrowRight, Printer, RefreshCcw, Sparkles, Globe, Zap, Heart, Star } from 'lucide-react';
 import html2canvas from 'html2canvas';
 
 interface ResultItem {
@@ -126,9 +126,12 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
                 </div>
 
                 <div className="flex items-center gap-8">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-8xl font-headline font-bold text-primary leading-none">{topMajor.percentage}</span>
-                    <span className="text-3xl font-bold text-primary/40">%</span>
+                  <div className="flex flex-col">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-8xl font-headline font-bold text-primary leading-none">{topMajor.percentage}</span>
+                      <span className="text-3xl font-bold text-primary/40">%</span>
+                    </div>
+                    <span className="text-[10px] font-black text-primary/60 tracking-widest mt-2 uppercase">Skor Kecocokan Tertinggi</span>
                   </div>
                   <div className="h-20 w-px bg-white/10" />
                   <div className="space-y-1">
@@ -276,45 +279,62 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
         <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 10 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
-              <div style={{ width: '100px', height: '100px', background: topMajor.color, borderRadius: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '50px', fontWeight: '900', color: '#020617' }}>S</div>
+              <img src="/logoitbs.webp" alt="ITB Swadharma" style={{ width: '100px', height: 'auto', objectFit: 'contain' }} />
               <div>
                 <div style={{ fontSize: '36px', fontWeight: '900', letterSpacing: '4px' }}>ITB SWADHARMA</div>
                 <div style={{ fontSize: '16px', opacity: 0.5, letterSpacing: '8px' }}>NEURAL ENGINE 2026</div>
               </div>
             </div>
-            <div style={{ fontSize: '20px', fontWeight: '900', color: topMajor.color, border: `2px solid ${topMajor.color}`, padding: '12px 30px', borderRadius: '20px' }}>OFFICIAL RESULT</div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '60px', fontSize: '20px', fontWeight: '900', color: topMajor.color, border: `2px solid ${topMajor.color}`, padding: '0 30px', borderRadius: '20px' }}>OFFICIAL RESULT</div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', marginTop: '-20px' }}>
             <div>
-              <div style={{ fontSize: '32px', opacity: 0.6, marginBottom: '16px', fontWeight: '500' }}>POTENSI MASA DEPAN:</div>
+              <div style={{ fontSize: '32px', opacity: 0.6, marginBottom: '16px', fontWeight: '500' }}>POTENSI MASA DEPAN {userName.toUpperCase()}:</div>
               <div style={{ fontSize: '100px', fontWeight: '900', lineHeight: 1, letterSpacing: '-4px', color: 'white' }}>
                 {topMajor.name}
               </div>
             </div>
 
             <div style={{ display: 'flex', gap: '60px', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '50px', borderRadius: '50px', border: '1px solid rgba(255,255,255,0.1)' }}>
-              <div style={{ fontSize: '180px', fontWeight: '900', color: topMajor.color, lineHeight: 0.8 }}>{topMajor.percentage}%</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <div style={{ fontSize: '32px', fontWeight: '900', color: 'white' }}>MATCH SCORE</div>
-                <div style={{ fontSize: '24px', opacity: 0.6, maxWidth: '400px' }}>Dianalisis khusus untuk {userName} berdasarkan preferensi kognitif.</div>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ fontSize: '180px', fontWeight: '900', color: topMajor.color, lineHeight: 0.8 }}>{topMajor.percentage}%</div>
+                <div style={{ fontSize: '14px', fontWeight: '900', color: topMajor.color, letterSpacing: '2px', marginTop: '15px' }}>SKOR KECOCOKAN TERTINGGI</div>
+              </div>
+              <div style={{ width: '2px', height: '150px', background: 'rgba(255,255,255,0.1)' }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', flex: 1 }}>
+                <div style={{ fontSize: '24px', fontWeight: '900', color: 'white', opacity: 0.6 }}>PERBANDINGAN PRODI LAIN:</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {results.slice(1, 4).map((m) => (
+                    <div key={m.id} style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                      <div style={{ width: '120px', fontSize: '14px', fontWeight: '700', color: 'white' }}>{m.name}</div>
+                      <div style={{ flex: 1, height: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', overflow: 'hidden' }}>
+                        <div style={{ width: `${m.percentage}%`, height: '100%', background: m.color }} />
+                      </div>
+                      <div style={{ width: '40px', fontSize: '14px', fontWeight: '900', color: m.color }}>{m.percentage}%</div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
             <div style={{ padding: '50px', background: `${topMajor.color}11`, borderRadius: '40px', border: `1px solid ${topMajor.color}33` }}>
-              <div style={{ fontSize: '36px', lineHeight: 1.5, textAlign: 'center', fontStyle: 'italic', fontWeight: '500' }}>
+              <div style={{ fontSize: '32px', lineHeight: 1.5, textAlign: 'center', fontStyle: 'italic', fontWeight: '500', color: 'white' }}>
                 "{topMajor.description}"
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', paddingTop: '40px', borderTop: '2px solid rgba(255,255,255,0.1)' }}>
-            <div>
-              <div style={{ fontSize: '20px', opacity: 0.4, marginBottom: '8px' }}>DAFTAR SEKARANG:</div>
-              <div style={{ fontSize: '48px', fontWeight: '900' }}>pmb.swadharma.ac.id</div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '40px', borderTop: '2px solid rgba(255,255,255,0.1)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div style={{ fontSize: '18px', opacity: 0.4, fontWeight: '700' }}>SIAP MELANGKAH?</div>
+              <div style={{ background: 'white', color: '#020617', padding: '15px 40px', borderRadius: '15px', fontSize: '32px', fontWeight: '900', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                DAFTAR SEKARANG <ArrowRight size={32} />
+              </div>
             </div>
             <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: '20px', fontWeight: '900', color: topMajor.color }}>© ITB SWADHARMA 2026</div>
+              <div style={{ fontSize: '24px', fontWeight: '900', color: topMajor.color, marginBottom: '5px' }}>pmb.swadharma.ac.id</div>
+              <div style={{ fontSize: '16px', opacity: 0.4 }}>© ITB SWADHARMA 2026</div>
             </div>
           </div>
         </div>

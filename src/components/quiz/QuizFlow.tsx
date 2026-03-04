@@ -39,16 +39,16 @@ export const QuizFlow: React.FC<QuizFlowProps> = ({ onComplete }) => {
   const currentQuestion = QUIZ_QUESTIONS[currentIndex];
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-6 py-8">
-      <div className="mb-6 space-y-3">
-        <div className="flex justify-between items-end text-[9px] font-black text-primary uppercase tracking-[0.4em]">
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+    <div className="w-full max-w-2xl mx-auto px-4">
+      <div className="mb-4 space-y-2">
+        <div className="flex justify-between items-end text-[8px] font-black text-primary uppercase tracking-[0.3em]">
+          <div className="flex items-center gap-1.5">
+            <Sparkles className="w-3 h-3 animate-pulse" />
             <span>Phase {currentIndex + 1} / {QUIZ_QUESTIONS.length}</span>
           </div>
           <span>{Math.round(progress)}% Sync</span>
         </div>
-        <Progress value={progress} className="h-1.5 bg-white/10" />
+        <Progress value={progress} className="h-1 bg-white/10" />
       </div>
 
       <AnimatePresence mode="wait">
@@ -57,17 +57,17 @@ export const QuizFlow: React.FC<QuizFlowProps> = ({ onComplete }) => {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 1.02 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="animate-border-rainbow p-6 md:p-8 rounded-[2rem] shadow-2xl bg-black/40 backdrop-blur-sm"
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="animate-border-rainbow p-5 md:p-6 rounded-[1.5rem] shadow-2xl bg-black/40 backdrop-blur-sm"
         >
-          <div className="mb-6 text-center">
-            <h2 className="text-xl md:text-2xl font-headline font-bold mb-3 leading-tight text-white max-w-2xl mx-auto">
+          <div className="mb-5 text-center">
+            <h2 className="text-lg md:text-xl font-headline font-bold mb-2 leading-tight text-white">
               {currentQuestion.text}
             </h2>
-            <div className="h-1 w-12 bg-primary/40 rounded-full mx-auto" />
+            <div className="h-0.5 w-10 bg-primary/40 rounded-full mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             {currentQuestion.options.map((option, idx) => {
               const isLastOdd = currentQuestion.options.length % 2 !== 0 && idx === currentQuestion.options.length - 1;
               return (
@@ -77,26 +77,26 @@ export const QuizFlow: React.FC<QuizFlowProps> = ({ onComplete }) => {
                   whileTap={{ scale: 0.98 }}
                   onClick={() => handleSelect(idx)}
                   className={cn(
-                    "w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-primary/20 hover:border-primary/50 transition-all group flex justify-between items-center relative overflow-hidden shadow-md",
+                    "w-full text-left p-3.5 rounded-xl border border-white/10 bg-white/5 hover:bg-primary/20 hover:border-primary/50 transition-all group flex justify-between items-center relative overflow-hidden",
                     isLastOdd && "md:col-span-2"
                   )}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <span className="text-sm md:text-base font-medium relative z-10 pr-4 leading-snug">{option.text}</span>
-                  <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all text-primary relative z-10 shrink-0" />
+                  <span className="text-[11px] md:text-xs font-medium relative z-10 pr-3 leading-snug text-white/90">{option.text}</span>
+                  <ChevronRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all text-primary relative z-10 shrink-0" />
                 </motion.button>
               );
             })}
           </div>
 
-          <div className="mt-6 pt-4 border-t border-white/10 flex justify-start">
+          <div className="mt-4 pt-3 border-t border-white/10 flex justify-start">
             {currentIndex > 0 && (
               <Button
                 variant="ghost"
                 onClick={goBack}
-                className="text-white/40 hover:text-white hover:bg-white/5 rounded-lg h-9 px-4 transition-all text-[10px] font-bold tracking-widest"
+                className="text-white/40 hover:text-white hover:bg-white/5 h-8 px-3 transition-all text-[8px] font-bold tracking-widest"
               >
-                <ArrowLeft className="w-3.5 h-3.5 mr-2" />
+                <ArrowLeft className="w-3 h-3 mr-1.5" />
                 KEMBALI
               </Button>
             )}

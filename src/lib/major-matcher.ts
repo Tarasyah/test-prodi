@@ -58,111 +58,102 @@ export interface QuizQuestion {
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 1,
-    text: "Kalau lagi buka aplikasi atau game baru yang keren banget, hal pertama yang bikin kamu penasaran adalah...",
+    text: "Bagaimana kondisi meja belajarmu atau kamar idealmu?",
     options: [
-      { text: "Gimana ya cara orang nulis kode programnya sampai bisa selancar ini?", weights: { ti: 5, sd: 2 } },
-      { text: "Wah, fitur-fiturnya gampang dipakai dan ngebantu banget nih!", weights: { si: 5, bd: 2 } },
-      { text: "Keren, dari mana ya aplikasi ini dapat data dan bisa seakurat ini?", weights: { sd: 5, ti: 2 } },
-      { text: "Gimana strategi mereka jualan dan narik banyak banget pengguna?", weights: { bd: 5, si: 2 } },
-      { text: "Gimana ya cara aplikasi ini ngatur keuangannya biar tetap untung?", weights: { ak: 5 } }
+      { text: "Minimalis, hanya ada barang yang sedang dipakai biar fokus.", weights: { si: 5, ti: 2 } },
+      { text: "Kelihatan berantakan buat orang lain, tapi aku tahu persis letak tiap barang.", weights: { sd: 5, ti: 3 } },
+      { text: "Super rapi, semua barang punya tempat dan labelnya masing-masing.", weights: { ak: 5 } },
+      { text: "Penuh dekorasi, dinamis, dan posisinya sering aku ubah-ubah biar nggak bosan.", weights: { bd: 5 } }
     ]
   },
   {
     id: 2,
-    text: "Bayangkan kamu ada di kepanitiaan event sekolah/kampus. Kamu paling suka kebagian tugas apa?",
+    text: "Saat main game *board game* (monopoli/werewolf) atau *video game* baru, kamu biasanya...",
     options: [
-      { text: "Ngurusin website, sistem pendaftaran, atau hal-hal berbau IT.", weights: { ti: 5, si: 3 } },
-      { text: "Mastiin komunikasi antara divisi IT dan lapangan berjalan lancar.", weights: { si: 5, bd: 2 } },
-      { text: "Menganalisis data peserta buat tahu tren dan target promosi.", weights: { sd: 5, si: 2 } },
-      { text: "Jadi bendahara dong! Ngatur budget, catat pengeluaran, dan pastiin uang aman.", weights: { ak: 5 } },
-      { text: "Tim promosi dan kreatif! Mikirin cara bikin event-nya viral di sosmed.", weights: { bd: 5 } }
+      { text: "Baca buku panduan atau tutorialnya sampai paham betul sebelum main.", weights: { ak: 4, ti: 4 } },
+      { text: "Langsung main aja, nanti juga paham triknya sambil jalan.", weights: { bd: 5, si: 2 } },
+      { text: "Mengamati pola main lawan buat nyari kelemahan mereka.", weights: { sd: 5, bd: 2 } },
+      { text: "Mastiin semua teman ngerti aturannya biar permainannya seru dan adil.", weights: { si: 5, ak: 2 } }
     ]
   },
   {
     id: 3,
-    text: "Pas dengar kata 'Data', apa yang langsung terlintas di pikiranmu?",
+    text: "Kalau kamu dikasih tugas kelompok dadakan, peran apa yang otomatis kamu ambil?",
     options: [
-      { text: "Sesuatu yang harus diamankan dan diproses pakai bahasa pemrograman.", weights: { ti: 4, sd: 3 } },
-      { text: "Informasi yang bisa diolah buat bikin keputusan organisasi yang lebih baik.", weights: { si: 4, bd: 3 } },
-      { text: "Kumpulan angka raksasa yang bisa memprediksi masa depan kalau dianalisis.", weights: { sd: 5, ti: 2 } },
-      { text: "Laporan keuangan, neraca, dan angka-angka yang harus 'balance'.", weights: { ak: 5 } },
-      { text: "Aset penting buat bikin iklan yang tertarget dan strategi marketing jitu.", weights: { bd: 5, sd: 2 } }
+      { text: "Tukang cari bahan dan riset informasi paling lengkap.", weights: { sd: 5, ti: 2 } },
+      { text: "Tukang ngatur jadwal, bagi tugas, dan ngerapiin format akhirnya.", weights: { si: 5, ak: 3 } },
+      { text: "Tukang presentasi yang jago ngomong dan ngeyakinin dosen.", weights: { bd: 5 } },
+      { text: "Eksekutor yang kerja di balik layar, asal jelas instruksinya apa.", weights: { ti: 5, ak: 2 } }
     ]
   },
   {
     id: 4,
-    text: "Teman-temanmu sering mengenal kamu sebagai orang yang...",
+    text: "Apa hal yang paling bikin kamu cepat *bad mood*?",
     options: [
-      { text: "Si Paling Tekno: Sering dimintain tolong urusan gadget atau software.", weights: { ti: 5, si: 2 } },
-      { text: "Si Paling Solutif: Pintar cari cara paling efisien buat nyelesaiin tugas kelompok.", weights: { si: 5, bd: 2 } },
-      { text: "Si Paling Kritis: Gampang nemuin pola dan nggak gampang ketipu hoax.", weights: { sd: 5, ak: 2 } },
-      { text: "Si Paling Teliti: Catatannya rapi, presisi, dan ingat banget soal detail.", weights: { ak: 5 } },
-      { text: "Si Paling Up-to-date: Tahu tren terbaru dan jago banget ngomong/promosi.", weights: { bd: 5 } }
+      { text: "Kerja dua kali gara-gara sistem atau aturannya nggak jelas.", weights: { si: 5, ti: 3 } },
+      { text: "Orang yang ngambil keputusan cuma pakai insting tanpa bukti.", weights: { sd: 5, ak: 3 } },
+      { text: "Hitungan yang nggak *balance* atau ada detail kecil yang kelewat.", weights: { ak: 5 } },
+      { text: "Birokrasi yang kaku dan nggak ngasih ruang buat kreativitas.", weights: { bd: 5, si: 2 } }
     ]
   },
   {
     id: 5,
-    text: "Kalau disuruh memilih bacaan ringan di waktu luang, topik apa yang kamu pilih?",
+    text: "Saat mau beli barang mahal (misal: HP atau laptop), proses berpikirmu adalah...",
     options: [
-      { text: "Inovasi Kecerdasan Buatan (AI) dan Algoritma Masa Depan.", weights: { ti: 5, sd: 4 } },
-      { text: "Rahasia Perusahaan Besar Menyelaraskan Teknologi dengan Kebutuhan Pasar.", weights: { si: 5, bd: 3 } },
-      { text: "Seni Merapikan Keuangan dan Tips Investasi Pemula.", weights: { ak: 5 } },
-      { text: "Kisah Sukses Startup dan Trik Jualan Laris Manis di Era Digital.", weights: { bd: 5, si: 2 } }
+      { text: "Bandingin spesifikasi detailnya, nonton 10 video *review* berbeda.", weights: { ti: 5, sd: 3 } },
+      { text: "Cari tahu promo, *cashback*, atau nilai jual kembalinya nanti.", weights: { bd: 5, ak: 3 } },
+      { text: "Bikin tabel perbandingan plus-minus di otak (atau di catatan).", weights: { ak: 5, sd: 2 } },
+      { text: "Milih yang ekosistemnya paling nyambung sama gadgetku yang lain.", weights: { si: 5 } }
     ]
   },
   {
     id: 6,
-    text: "Menurutmu, apa tantangan terbesar di dunia modern saat ini?",
+    text: "Pilih kekuatan super (superpower) yang paling kamu inginkan:",
     options: [
-      { text: "Ancaman hacker dan pentingnya membangun sistem keamanan yang kuat.", weights: { ti: 5 } },
-      { text: "Susahnya bikin teknologi yang benar-benar bisa dipakai mudah sama orang awam.", weights: { si: 5 } },
-      { text: "Banyaknya data (big data) yang berserakan tapi belum dimanfaatkan maksimal.", weights: { sd: 5 } },
-      { text: "Menjaga kejujuran dan transparansi dalam laporan keuangan.", weights: { ak: 5 } },
-      { text: "Persaingan bisnis yang super ketat dan berubah tiap detik di internet.", weights: { bd: 5 } }
+      { text: "Bisa baca pikiran orang lain biar tahu apa yang mereka mau.", weights: { bd: 5 } },
+      { text: "Bisa melihat persentase probabilitas masa depan dari setiap pilihan.", weights: { sd: 5, si: 2 } },
+      { text: "Bisa mengendalikan dan ngobrol sama mesin atau elektronik.", weights: { ti: 5 } },
+      { text: "Bisa menghentikan waktu sebentar buat ngerapiin segala kekacauan.", weights: { ak: 5, si: 2 } }
     ]
   },
   {
     id: 7,
-    text: "Cara belajar yang paling asik dan masuk buat kamu adalah...",
+    text: "Gaya kamu saat berdebat atau beda pendapat dengan teman:",
     options: [
-      { text: "Praktik langsung nyoba ngetik kode atau ngoprek sesuatu sampai bisa.", weights: { ti: 5 } },
-      { text: "Bikin mind-map atau diagram biar kelihatan gambaran besarnya (big picture).", weights: { si: 5, sd: 2 } },
-      { text: "Mencari pola dari kumpulan contoh kasus atau data historis.", weights: { sd: 5, ak: 2 } },
-      { text: "Mengerjakan hitungan dengan runut, sistematis, dan sesuai aturan yang pasti.", weights: { ak: 5 } },
-      { text: "Diskusi dan bedah kasus nyata tentang tren bisnis yang lagi viral.", weights: { bd: 5 } }
+      { text: "Ngasih fakta, angka, atau bukti kuat yang nggak bisa dibantah.", weights: { sd: 5, ak: 2 } },
+      { text: "Nyari celah logika dari omongan dia yang nggak masuk akal.", weights: { ti: 5 } },
+      { text: "Mencari jalan tengah biar kedua pihak sama-sama untung (*win-win*).", weights: { si: 5, bd: 2 } },
+      { text: "Pakai pesona, rayuan, dan pendekatan emosional biar dia luluh.", weights: { bd: 5 } }
     ]
   },
   {
     id: 8,
-    text: "Jika kamu punya perusahaan, masalah apa yang akan langsung kamu turun tangan memperbaikinya?",
+    text: "Saat menghadapi masalah atau jalan buntu, kamu biasanya...",
     options: [
-      { text: "Aplikasi atau website perusahaan yang sering error dan lemot.", weights: { ti: 5, si: 2 } },
-      { text: "Sistem operasional karyawan yang masih manual dan berantakan.", weights: { si: 5, sd: 2 } },
-      { text: "Keputusan penting yang diambil tanpa melihat data survei pasar.", weights: { sd: 5, si: 2 } },
-      { text: "Pembukuan keuangan yang bocor atau tidak seimbang.", weights: { ak: 5 } },
-      { text: "Penjualan yang menurun tajam gara-gara strategi marketing kurang oke.", weights: { bd: 5 } }
+      { text: "Mundur sebentar, menyendiri, lalu membongkar masalahnya dari nol.", weights: { ti: 5 } },
+      { text: "Nanya pendapat orang lain atau cari referensi *case* yang mirip.", weights: { si: 5, bd: 2 } },
+      { text: "Mengecek ulang semua langkah sebelumnya, pasti ada pola yang terlewat.", weights: { sd: 5, ak: 2 } },
+      { text: "Fokus ke rencana cadangan (*Plan B*) dan meminimalisir kerugian.", weights: { ak: 5, bd: 2 } }
     ]
   },
   {
     id: 9,
-    text: "Jika kamu menemukan sebuah teka-teki atau masalah yang rumit, pendekatan utamamu adalah:",
+    text: "Genre tontonan (film/series) favoritmu biasanya yang seperti apa?",
     options: [
-      { text: "Membongkar sistemnya untuk melihat di mana letak kerusakannya.", weights: { ti: 5 } },
-      { text: "Mengevaluasi alur kerjanya dan mencari cara menyederhanakannya.", weights: { si: 5 } },
-      { text: "Mengumpulkan semua fakta dan angka yang ada dulu, baru ambil kesimpulan.", weights: { sd: 5, ak: 3 } },
-      { text: "Membuat catatan sistematis untuk memastikan tidak ada detail yang terlewat.", weights: { ak: 5 } },
-      { text: "Melihatnya sebagai tantangan untuk mencari celah atau ide baru.", weights: { bd: 5 } }
+      { text: "Misteri / Detektif yang bikin mikir keras nebak *plot twist*.", weights: { sd: 5, ti: 2 } },
+      { text: "Sci-Fi / Masa depan dengan teknologi-teknologi yang mindblowing.", weights: { ti: 5, si: 2 } },
+      { text: "Kisah nyata tentang membangun kerajaan bisnis atau intrik perusahaan.", weights: { bd: 5, mn: 2 } }, // mn is replaced by sd in previous code, but mapped here for logic
+      { text: "Dokumenter sejarah, biografi, atau sesuatu yang terstruktur rapi.", weights: { ak: 5 } }
     ]
   },
   {
     id: 10,
-    text: "Pekerjaan impianmu di masa depan akan membuatmu merasa sukses jika...",
+    text: "Kalau kamu dikasih *budget* tak terbatas untuk liburan, kamu bakal...",
     options: [
-      { text: "Bisa menciptakan teknologi/software canggih yang dipakai jutaan orang.", weights: { ti: 5 } },
-      { text: "Bisa meminim transformasi digital di sebuah perusahaan multinasional.", weights: { si: 5, bd: 2 } },
-      { text: "Bisa memecahkan misteri besar menggunakan kekuatan AI dan data.", weights: { sd: 5, ti: 2 } },
-      { text: "Bisa menjadi ahli keuangan terpercaya dengan integritas tinggi.", weights: { ak: 5 } },
-      { text: "Bisa membangun startup atau bisnis digital sendiri yang terus berkembang.", weights: { bd: 5 } }
+      { text: "Bikin rute perjalanan yang super efisien biar semua tempat wisata kekunjungi.", weights: { si: 5, ti: 2 } },
+      { text: "Nyobain pengalaman-pengalaman baru yang eksklusif dan *trendsetter* banget.", weights: { bd: 5 } },
+      { text: "Tetap mencatat pengeluaran harian dan cari penawaran nilai terbaik.", weights: { ak: 5 } },
+      { text: "Eksplorasi tempat tersembunyi yang jarang didatangi turis biasa.", weights: { sd: 5 } }
     ]
   }
 ];

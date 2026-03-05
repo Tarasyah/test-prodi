@@ -63,9 +63,9 @@ export default function Home() {
                 className="flex flex-col items-center"
               >
                 <img 
-                  src="/logoitbs.webp" 
+                  src="/img/logoitbs.webp" 
                   alt="Logo ITB Swadharma" 
-                  className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl" 
+                  className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-2xl" 
                 />
               </motion.div>
 
@@ -107,7 +107,7 @@ export default function Home() {
 
               <div className="grid grid-cols-4 gap-2 pt-4 border-t border-white/10 w-full max-w-sm">
                 {[
-                  { icon: <GraduationCap className="w-3.5 h-3.5" />, text: "Hybrid" },
+                  { icon: <GraduationCap className="w-3.5 h-3.5" />, text: "Fleksibel" },
                   { icon: <Zap className="w-3.5 h-3.5" />, text: "Next-Gen" },
                   { icon: <Globe className="w-3.5 h-3.5" />, text: "Global" },
                   { icon: <Shield className="w-3.5 h-3.5" />, text: "Certified" }

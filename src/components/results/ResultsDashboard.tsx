@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { MajorId } from '@/lib/major-matcher';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell } from 'recharts';
-import { RefreshCcw, ArrowRight, Download } from 'lucide-react';
-import html2canvas from 'html2canvas';
+import { RefreshCcw, ArrowRight } from 'lucide-react';
 
 interface ResultItem {
   id: MajorId;
@@ -26,22 +25,6 @@ interface ResultsDashboardProps {
 
 export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, results, onRetake }) => {
   const topMajor = results[0];
-  const downloadRef = useRef<HTMLDivElement>(null);
-
-  const handleDownload = async () => {
-    if (downloadRef.current) {
-      const canvas = await html2canvas(downloadRef.current, {
-        scale: 2,
-        backgroundColor: '#020617',
-        useCORS: true,
-        logging: false,
-      });
-      const link = document.createElement('a');
-      link.download = `Hasil-Matcher-${userName}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-    }
-  };
 
   return (
     <div className="relative min-h-full flex flex-col items-center justify-center py-2 overflow-hidden">
@@ -114,15 +97,6 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
                       <ArrowRight className="ml-2 w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                     </a>
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    onClick={handleDownload}
-                    className="border-white/20 hover:bg-white/5 text-[10px] font-bold rounded-lg h-8"
-                  >
-                    <Download className="w-3 h-3 mr-2" />
-                    SIMPAN
-                  </Button>
                 </div>
               </div>
             </div>
@@ -140,15 +114,16 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
                 
                 <div className="flex-1 min-h-[160px]">
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={results} layout="vertical" margin={{ left: -10, right: 30, top: 10, bottom: 10 }}>
+                    <BarChart data={results} layout="vertical" margin={{ left: 0, right: 30, top: 10, bottom: 10 }}>
                       <XAxis type="number" hide />
                       <YAxis 
                         dataKey="name" 
                         type="category" 
-                        width={90}
+                        width={110}
                         axisLine={false}
                         tickLine={false}
                         tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 9, fontWeight: 700 }}
+                        tickFormatter={(value) => value.replace('Teknik Informatika', 'T. Informatika')}
                       />
                       <Bar dataKey="percentage" radius={[0, 4, 4, 0]} barSize={10}>
                         {results.map((entry, index) => (
@@ -171,84 +146,6 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
               </CardContent>
             </Card>
           </motion.div>
-        </div>
-      </div>
-
-      {/* Hidden Download Template (4:5 Aspect Ratio) */}
-      <div className="fixed left-[-9999px] top-0 no-print">
-        <div 
-          ref={downloadRef}
-          style={{ width: '1080px', height: '1350px' }}
-          className="bg-slate-950 flex flex-col p-16 relative overflow-hidden text-center"
-        >
-          {/* Graphic Elements */}
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 blur-[150px] rounded-full -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/15 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-
-          {/* Header */}
-          <div className="relative z-10 flex justify-between items-center mb-16 px-4">
-            <div className="flex items-center gap-6 text-left">
-              <img src="/img/logoitbs.webp" alt="Logo" className="w-24 h-24 object-contain" />
-              <div>
-                <h4 className="text-2xl font-black text-white leading-tight uppercase tracking-tighter">ITB SWADHARMA</h4>
-                <p className="text-sm font-bold text-primary tracking-[0.3em] uppercase">Major Matcher Report</p>
-              </div>
-            </div>
-            <div className="bg-primary/10 border border-primary/30 px-8 py-3 rounded-full flex items-center justify-center">
-              <span className="text-sm font-black text-primary tracking-widest uppercase">OFFICIAL RESULT</span>
-            </div>
-          </div>
-
-          {/* User & Title */}
-          <div className="relative z-10 mt-10">
-            <h5 className="text-xl font-black text-white/40 tracking-[0.5em] mb-4 uppercase">POTENSI MASA DEPAN {userName.toUpperCase()}:</h5>
-            <h1 className="text-8xl font-black text-white leading-none tracking-tighter uppercase mb-8 max-w-[900px] mx-auto">
-              {topMajor.name}
-            </h1>
-          </div>
-
-          {/* Score Section */}
-          <div className="relative z-10 flex flex-col items-center justify-center flex-1">
-            <div className="relative">
-               <div className="absolute inset-0 bg-primary blur-[60px] opacity-20" />
-               <div className="relative flex items-baseline gap-2">
-                 <span className="text-[16rem] font-black text-primary leading-none">{topMajor.percentage}</span>
-                 <span className="text-7xl font-black text-primary/50">%</span>
-               </div>
-            </div>
-            <p className="text-xl font-black text-primary/60 tracking-[0.4em] uppercase -mt-4">SKOR KECOCOKAN TERTINGGI</p>
-            
-            {/* Comparison Mini Chart */}
-            <div className="mt-16 w-full max-w-xl space-y-6">
-               {results.slice(1, 4).map((res, i) => (
-                 <div key={i} className="space-y-2">
-                   <div className="flex justify-between text-sm font-black text-white/60 uppercase tracking-widest">
-                     <span>{res.name}</span>
-                     <span>{res.percentage}%</span>
-                   </div>
-                   <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-                     <div className="h-full bg-white/20" style={{ width: `${res.percentage}%` }} />
-                   </div>
-                 </div>
-               ))}
-            </div>
-          </div>
-
-          {/* Footer / CTA */}
-          <div className="relative z-10 mt-auto flex justify-between items-end border-t border-white/10 pt-12">
-            <div className="text-left space-y-4">
-              <div className="bg-white text-slate-950 px-10 py-5 rounded-2xl inline-block shadow-2xl">
-                <span className="text-xl font-black tracking-widest">DAFTAR SEKARANG</span>
-              </div>
-              <p className="text-sm font-bold text-white/30 tracking-[0.2em] ml-2">pmb.swadharma.ac.id</p>
-            </div>
-            <div className="text-right">
-              <p className="text-xs font-black text-white/20 tracking-[0.2em] uppercase max-w-[250px]">
-                HASIL ANALISIS RESMI INSTITUT TEKNOLOGI DAN BISNIS SWADHARMA
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>

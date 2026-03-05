@@ -65,10 +65,10 @@ export const QuizFlow: React.FC<QuizFlowProps> = ({ onComplete }) => {
           animate="animate"
           exit="exit"
           transition={{ duration: 0.2, ease: "easeInOut" }}
-          className="animate-border-rainbow p-8 md:p-10 rounded-[2rem] shadow-2xl bg-black/40 backdrop-blur-sm"
+          className="animate-border-rainbow p-6 md:p-10 rounded-[2rem] shadow-2xl bg-black/40 backdrop-blur-sm"
         >
           <div className="mb-8 text-center">
-            <h2 className="text-2xl md:text-3xl font-headline font-bold mb-3 leading-tight text-white">
+            <h2 className="text-xl md:text-3xl font-headline font-bold mb-3 leading-tight text-white">
               {currentQuestion.text}
             </h2>
             <div className="h-1 w-12 bg-primary/40 rounded-full mx-auto" />

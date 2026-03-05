@@ -28,7 +28,7 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
 
   return (
     <div className="relative min-h-full flex flex-col items-center justify-center py-2 overflow-hidden">
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 space-y-4">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 space-y-4">
         {/* Header Logo */}
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
@@ -38,7 +38,7 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
           <img 
             src="/img/logoitbs.webp" 
             alt="Logo ITB Swadharma" 
-            className="w-12 h-12 md:w-14 md:h-14 object-contain" 
+            className="w-20 h-20 md:w-24 md:h-24 object-contain" 
           />
           <h3 className="text-[9px] font-headline font-bold tracking-[0.2em] uppercase text-primary">ITB Swadharma</h3>
         </motion.div>

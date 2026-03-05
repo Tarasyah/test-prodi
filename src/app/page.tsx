@@ -55,7 +55,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98 }}
-              className="flex flex-col items-center justify-center w-full max-w-md text-center space-y-4 md:space-y-6"
+              className="flex flex-col items-center justify-center w-full max-w-screen-xl text-center space-y-4 md:space-y-6"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}

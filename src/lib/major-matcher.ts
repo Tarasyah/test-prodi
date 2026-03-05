@@ -12,35 +12,35 @@ export const MAJORS: Record<MajorId, Major> = {
   ti: {
     id: 'ti',
     name: 'Teknik Informatika',
-    description: 'Arsitek masa depan! Kamu akan mahir merancang perangkat lunak, mengembangkan AI, dan menjaga keamanan siber kelas dunia.',
+    description: 'Kamu cocok di Teknik Informatika, di mana kamu akan belajar merancang dan membangun perangkat lunak, serta mendalami bidang seperti kecerdasan buatan (AI) dan keamanan siber.',
     color: '#3b82f6', // Bright Blue
     accent: '#1e40af',
   },
   si: {
     id: 'si',
     name: 'Sistem Informasi',
-    description: 'Sang inovator! Kamu akan menjadi jembatan yang mengintegrasikan teknologi informasi canggih dengan strategi bisnis yang efisien.',
+    description: 'Kamu cocok di Sistem Informasi, di mana kamu akan belajar menjembatani kebutuhan bisnis dengan solusi teknologi, serta merancang sistem yang efisien untuk perusahaan.',
     color: '#06b6d4', // Vibrant Cyan
     accent: '#0891b2',
   },
   sd: {
     id: 'sd',
     name: 'Sains Data',
-    description: 'Detektif masa kini! Kamu akan mengolah big data menjadi wawasan berharga untuk memprediksi tren dan memecahkan masalah kompleks.',
+    description: 'Kamu cocok di Sains Data, di mana kamu akan belajar menganalisis data dalam jumlah besar untuk menemukan pola dan wawasan yang berguna untuk pengambilan keputusan.',
     color: '#8b5cf6', // Electric Purple
     accent: '#6d28d9',
   },
   ak: {
     id: 'ak',
     name: 'Akuntansi',
-    description: 'Pilar kepercayaan! Kamu akan memiliki keahlian finansial mendalam untuk menjaga integritas pelaporan keuangan dan audit profesional.',
+    description: 'Kamu cocok di Akuntansi, di mana kamu akan belajar mengelola keuangan, memastikan integritas laporan keuangan, dan melakukan audit.',
     color: '#f59e0b', // Glowing Amber
     accent: '#d97706',
   },
   bd: {
     id: 'bd',
     name: 'Bisnis Digital',
-    description: 'Pionir industri 4.0! Kamu siap menguasai ekosistem e-commerce, startup, dan strategi pemasaran digital yang revolusioner.',
+    description: 'Kamu cocok di Bisnis Digital, di mana kamu akan belajar tentang e-commerce, strategi pemasaran digital, dan cara membangun bisnis di era digital.',
     color: '#10b981', // Neon Emerald
     accent: '#059669',
   },

@@ -53,7 +53,7 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
           className="flex flex-col items-center gap-1.5 text-center"
         >
           <img 
-            src="/logoitbs.webp" 
+            src="/img/logoitbs.webp" 
             alt="Logo ITB Swadharma" 
             className="w-12 h-12 md:w-14 md:h-14 object-contain" 
           />
@@ -189,7 +189,7 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ userName, re
           {/* Header */}
           <div className="relative z-10 flex justify-between items-center mb-16 px-4">
             <div className="flex items-center gap-6 text-left">
-              <img src="/logoitbs.webp" alt="Logo" className="w-24 h-24 object-contain" />
+              <img src="/img/logoitbs.webp" alt="Logo" className="w-24 h-24 object-contain" />
               <div>
                 <h4 className="text-2xl font-black text-white leading-tight uppercase tracking-tighter">ITB SWADHARMA</h4>
                 <p className="text-sm font-bold text-primary tracking-[0.3em] uppercase">Major Matcher Report</p>

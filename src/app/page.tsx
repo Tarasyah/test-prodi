@@ -47,7 +47,7 @@ export default function Home() {
         <div className="absolute bottom-[-5%] left-[-10%] w-[40%] h-[40%] bg-secondary/10 blur-[100px] rounded-full" />
       </div>
 
-      <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 z-10">
+      <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 z-10">
         <AnimatePresence mode="wait">
           {appState === 'intro' && (
             <motion.div
@@ -55,7 +55,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98 }}
-              className="flex flex-col items-center justify-center w-full max-w-md md:max-w-2xl text-center space-y-6"
+              className="flex flex-col items-center justify-center w-full max-w-md text-center space-y-4 md:space-y-6"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -65,15 +65,15 @@ export default function Home() {
                 <img 
                   src="/logoitbs.webp" 
                   alt="Logo ITB Swadharma" 
-                  className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-xl" 
+                  className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl" 
                 />
               </motion.div>
 
               <div className="space-y-2">
-                <h1 className="text-3xl md:text-4xl font-headline font-bold leading-tight tracking-tighter text-white">
+                <h1 className="text-2xl md:text-3xl font-headline font-bold leading-tight tracking-tighter text-white">
                   Rancang Masa <span className="text-primary italic">Depanmu.</span>
                 </h1>
-                <p className="text-xs md:text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
+                <p className="text-[10px] md:text-xs text-muted-foreground max-w-xs mx-auto leading-relaxed">
                   Temukan program studi yang paling sesuai dengan potensi unikmu melalui analisis cerdas.
                 </p>
               </div>
@@ -105,18 +105,18 @@ export default function Home() {
                 </Button>
               </motion.div>
 
-              <div className="grid grid-cols-4 gap-4 pt-4 border-t border-white/10 w-full max-w-lg">
+              <div className="grid grid-cols-4 gap-2 pt-4 border-t border-white/10 w-full max-w-sm">
                 {[
-                  { icon: <GraduationCap className="w-4 h-4" />, text: "Hybrid" },
-                  { icon: <Zap className="w-4 h-4" />, text: "Next-Gen" },
-                  { icon: <Globe className="w-4 h-4" />, text: "Global" },
-                  { icon: <Shield className="w-4 h-4" />, text: "Certified" }
+                  { icon: <GraduationCap className="w-3.5 h-3.5" />, text: "Hybrid" },
+                  { icon: <Zap className="w-3.5 h-3.5" />, text: "Next-Gen" },
+                  { icon: <Globe className="w-3.5 h-3.5" />, text: "Global" },
+                  { icon: <Shield className="w-3.5 h-3.5" />, text: "Certified" }
                 ].map((item, i) => (
-                  <div key={i} className="flex flex-col items-center gap-1.5 text-muted-foreground/60">
+                  <div key={i} className="flex flex-col items-center gap-1 text-muted-foreground/60">
                     <div className="p-1.5 rounded-lg bg-white/5 text-primary">
                       {item.icon}
                     </div>
-                    <span className="text-[7px] font-black uppercase tracking-[0.1em]">{item.text}</span>
+                    <span className="text-[6px] font-black uppercase tracking-[0.1em]">{item.text}</span>
                   </div>
                 ))}
               </div>
@@ -151,7 +151,7 @@ export default function Home() {
         </AnimatePresence>
       </div>
 
-      <footer className="w-full py-4 text-center text-muted-foreground/40 text-[9px] font-black tracking-[0.3em] uppercase no-print z-10 bg-background/50 backdrop-blur-sm">
+      <footer className="w-full py-4 text-center text-muted-foreground/40 text-[8px] font-black tracking-[0.3em] uppercase no-print z-10 bg-background/50 backdrop-blur-sm mt-auto">
         <p>© 2026 Institut Teknologi dan Bisnis Swadharma.</p>
       </footer>
     </main>

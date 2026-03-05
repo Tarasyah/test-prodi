@@ -142,7 +142,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     options: [
       { text: "Misteri / Detektif yang bikin mikir keras nebak 'plot twist'.", weights: { sd: 5, ti: 2 } },
       { text: "Sci-Fi / Masa depan dengan teknologi-teknologi yang mindblowing.", weights: { ti: 5, si: 2 } },
-      { text: "Kisah nyata tentang membangun kerajaan bisnis atau intrik perusahaan.", weights: { bd: 5, mn: 2 } }, // mn is replaced by sd in previous code, but mapped here for logic
+      { text: "Kisah nyata tentang membangun kerajaan bisnis atau intrik perusahaan.", weights: { bd: 5, sd: 2 } }, 
       { text: "Dokumenter sejarah, biografi, atau sesuatu yang terstruktur rapi.", weights: { ak: 5 } }
     ]
   },
@@ -162,9 +162,16 @@ export const calculateResults = (answers: number[]) => {
   const scores: Record<MajorId, number> = { ti: 0, si: 0, sd: 0, ak: 0, bd: 0 };
   
   answers.forEach((optionIndex, questionIndex) => {
-    const weights = QUIZ_QUESTIONS[questionIndex].options[optionIndex].weights;
+    const question = QUIZ_QUESTIONS[questionIndex];
+    if (!question) return;
+
+    const weights = question.options[optionIndex]?.weights;
+    if (!weights) return;
+
     Object.entries(weights).forEach(([majorId, value]) => {
-      scores[majorId as MajorId] += value || 0;
+      if (majorId in scores) {
+        scores[majorId as MajorId] += value || 0;
+      }
     });
   });
 

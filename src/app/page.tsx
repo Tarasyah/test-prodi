@@ -29,10 +29,9 @@ export default function Home() {
     const calculated = calculateResults(answers);
     setResults(calculated);
     
-    // Snappy analysis delay
     setTimeout(() => {
       setAppState('results');
-    }, 0);
+    }, 1500);
   };
 
   const handleRetake = () => {
@@ -67,10 +66,6 @@ export default function Home() {
                 alt="Logo ITB Swadharma" 
                 className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-xl" 
               />
-              <div className="p-1.5 px-4 rounded-full border border-white/10 bg-white/5 text-primary font-bold text-[10px] tracking-[0.3em] uppercase flex items-center gap-2">
-                <Sparkles className="w-3.5 h-3.5" />
-                ADMISSION 2026
-              </div>
             </motion.div>
 
             <div className="space-y-2">

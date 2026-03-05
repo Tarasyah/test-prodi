@@ -38,6 +38,12 @@ export const QuizFlow: React.FC<QuizFlowProps> = ({ onComplete }) => {
   const progress = ((currentIndex + 1) / QUIZ_QUESTIONS.length) * 100;
   const currentQuestion = QUIZ_QUESTIONS[currentIndex];
 
+  const variants = {
+    initial: { opacity: 0, y: 10 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -10 },
+  };
+
   return (
     <div className="w-full max-w-4xl mx-auto px-4">
       <div className="mb-6 space-y-3">
@@ -54,10 +60,11 @@ export const QuizFlow: React.FC<QuizFlowProps> = ({ onComplete }) => {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.02 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          variants={variants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={{ duration: 0.2, ease: "easeInOut" }}
           className="animate-border-rainbow p-8 md:p-10 rounded-[2rem] shadow-2xl bg-black/40 backdrop-blur-sm"
         >
           <div className="mb-8 text-center">
